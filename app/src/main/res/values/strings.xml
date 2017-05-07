@@ -5,13 +5,7 @@
     <string name="content_authority">com.viginfotech.chennaitimes.app</string>
 
 
-   <!-- <string name="invite">Send invitations!</string>
-    <string name="welcome">App Invite\nQuickstart</string>
-    <string name="referrer_hint">Deep link not provided</string>
-    <string name="deep_link_default">Deep link not set</string>
-    <string name="invitation_id_default">Invitation ID not set</string>
-    <string name="invite_friends_title">Invite Friends</string>
--->
+
     <string name="invitation_title">Chennai Times Tamil News</string>
     <string name="invitation_deep_link">https://play.google.com/store/apps/details?id=com.androidnanban.chennaitimes</string>
     <string name="invitation_cta">Install!</string>
@@ -19,30 +13,8 @@
     <string name="sent_invitations_fmt" formatted="false">Sent %d invitations</string>
     <string name="send_failed">Sending invitations failed</string>
 
-    <!--
-        <string name="deep_link_fmt" formatted="false">Deep Link: %s</string>
-        <string name="invitation_id_fmt" formatted="false">Invitation ID: %s</string>
 
 
-        <string name="invite_dialog_title">You got an invitation!</string>
-
-        <string name="google_play_services_error">Google Play Services Error</string>
-        <string name="custom_invite">Custom Invite</string>
-        -->
-
-    <string name="dummy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    </string>
 
     <string name="title_activity_detail">Detail</string>
 

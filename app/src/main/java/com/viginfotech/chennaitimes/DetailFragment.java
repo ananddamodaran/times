@@ -100,8 +100,6 @@ public class DetailFragment extends Fragment {
 
 
         AdRequest adRequest = new AdRequest.Builder()
-        .addTestDevice("F3F6D8BBEE58C3B8C10DFE39B4A4166C")
-        //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
         mAdView.loadAd(adRequest);

@@ -14,7 +14,7 @@ public class ChennaiTimesApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MobileAds.initialize(this, getString(R.string.banner_ad_unit_id_dev));
+        MobileAds.initialize(this, getString(R.string.banner_ad_unit_id_prod));
         context=this;
 
 
