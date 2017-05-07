@@ -65,7 +65,6 @@ public class Nakkheeran {
                     if (feedList != null) {
 
                         feedList = removeDuplicates(Constants.SOURCE_NAKKHEERAN, Arrays.asList(category), feedList);
-                        System.out.println("filtered size nakkeran" + feedList.size());
                         if(feedList.size()>0) {
                             ofy().save().entities(feedList).now();
                             feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_NAKKHEERAN, category);

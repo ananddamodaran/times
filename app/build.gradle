@@ -18,6 +18,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -40,12 +41,16 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:design:25.3.0'
-    compile 'com.google.firebase:firebase-core:9.4.0'
-    compile 'com.google.firebase:firebase-crash:9.4.0'
-    compile 'com.google.firebase:firebase-messaging:9.4.0'
-    compile 'com.google.firebase:firebase-invites:9.4.0'
-    compile 'com.google.firebase:firebase-ads:9.4.0'
+    //firebase
+    compile 'com.google.firebase:firebase-core:10.2.4'
+    compile 'com.google.firebase:firebase-crash:10.2.4'
+    compile 'com.google.firebase:firebase-messaging:10.2.4'
+    compile 'com.google.firebase:firebase-invites:10.2.4'
+    compile 'com.google.firebase:firebase-ads:10.2.4'
+
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     testCompile 'junit:junit:4.12'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
+apply plugin: 'com.google.gms.google-services'
+

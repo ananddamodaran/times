@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             ads:adSize="BANNER"
             android:visibility="invisible"
-            ads:adUnitId="@string/banner_ad_unit_id_prod"
+            ads:adUnitId="@string/banner_ad_unit_id_dev"
             android:layout_margin="4dp"
             />
         <TextView

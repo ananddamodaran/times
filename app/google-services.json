@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "655952672695",
+    "firebase_url": "https://chennaitimes-staging.firebaseio.com",
+    "project_id": "chennaitimes-staging",
+    "storage_bucket": "chennaitimes-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655952672695:android:01e3e83ea3753e4b",
+        "android_client_info": {
+          "package_name": "com.viginfotech.chennaitimes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655952672695-0ank2q4g0mhnj6te4ckl9cj63lfd8qsl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.viginfotech.chennaitimes",
+            "certificate_hash": "ad361806cf16df2ebec4b0519b870114c9c60fc5"
+          }
+        },
+        {
+          "client_id": "655952672695-apfg8ooam5ng0v5ak6q7brc74btoh73j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0JmB5N_biLIf200-WeG6elAndNT6Lkcc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655952672695-apfg8ooam5ng0v5ak6q7brc74btoh73j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

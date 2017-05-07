@@ -63,19 +63,26 @@ public class TriggerRefresh extends IntentService {
         try {
         switch (category){
             case CATEGORY_HEADLINES:
-                feedList.addAll(myApiService.getHeadLines().execute().getItems());break;
+                List<Feed> headlines = myApiService.getHeadLines().execute().getItems();
+                if(headlines!=null)feedList.addAll(headlines);break;
             case CATEGORY_TAMILNADU:
-                feedList.addAll(myApiService.getTamilNadu().execute().getItems());break;
+                List<Feed> tamilnadu = myApiService.getTamilNadu().execute().getItems();
+                if(tamilnadu!=null)feedList.addAll(tamilnadu);break;
             case CATEGORY_INDIA:
-                feedList.addAll(myApiService.getIndiaFeeds().execute().getItems());break;
-            case CATEGORY_WORLD:
-                feedList.addAll(myApiService.getWorldFeeds().execute().getItems());break;
+                List<Feed> india = myApiService.getIndiaFeeds().execute().getItems();
+                if(india!=null)feedList.addAll(india);break;
+            case CATEGORY_WORLD:;
+                List<Feed> world = myApiService.getWorldFeeds().execute().getItems();
+                if(world!=null)feedList.addAll(world);break;
             case CATEGORY_BUSINESS:
-                feedList.addAll(myApiService.getBusinessFeeds().execute().getItems());break;
+                List<Feed> business = myApiService.getBusinessFeeds().execute().getItems();
+                if(business!=null)feedList.addAll(business);break;
             case CATEGORY_SPORTS:
-                feedList.addAll(myApiService.getSportsFeeds().execute().getItems());break;
+                List<Feed> sports = myApiService.getSportsFeeds().execute().getItems();
+                if(sports!=null)feedList.addAll(sports);break;
             case CATEGORY_CINEMA:
-                feedList.addAll(myApiService.getCinemaFeeds().execute().getItems());break;
+                List<Feed> cinema = myApiService.getCinemaFeeds().execute().getItems();
+                if(cinema!=null)feedList.addAll(cinema);break;
 
         }
              data = new ArrayList<>();

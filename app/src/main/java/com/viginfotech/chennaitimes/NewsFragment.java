@@ -224,7 +224,7 @@ public class NewsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-      //  Log.i(TAG, "onStart: ");
+
 
         GetFeedFromDisk getFeedFromDisk=new GetFeedFromDisk();
         getFeedFromDisk.execute(page);
@@ -296,7 +296,6 @@ public class NewsFragment extends Fragment {
                     }
 
                     Intent intent = new Intent(getActivity().getBaseContext(), Detail.class);
-                   // intent.putExtra(Constants.EXTRA_LOCAL_FEED, feed);
                     intent.putExtra("category",feed.getCategoryId());
                     intent.putExtra("position",selectedFeedToRead);
 
