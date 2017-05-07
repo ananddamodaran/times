@@ -1,0 +1,570 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/fyYypl6KqAsFEG2cNppL_ChQMEk\"",
+ "discoveryVersion": "v1",
+ "id": "chennaiTimesApi:v1",
+ "name": "chennaiTimesApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "viginfotech.com",
+ "ownerName": "viginfotech.com",
+ "icons": {
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "rpcUrl": "https://myApplicationId.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_RegistrationRecord": {
+   "id": "CollectionResponse_RegistrationRecord",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "RegistrationRecord"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "Feed": {
+   "id": "Feed",
+   "type": "object",
+   "properties": {
+    "categoryId": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "detailNews": {
+     "type": "string"
+    },
+    "detailedTitle": {
+     "type": "string"
+    },
+    "guid": {
+     "type": "string"
+    },
+    "image": {
+     "type": "string"
+    },
+    "pubDate": {
+     "type": "string",
+     "format": "int64"
+    },
+    "sourceId": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "summary": {
+     "type": "string"
+    },
+    "thumbnail": {
+     "type": "string"
+    },
+    "title": {
+     "type": "string"
+    }
+   }
+  },
+  "FeedCollection": {
+   "id": "FeedCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Feed"
+     }
+    }
+   }
+  },
+  "RegistrationRecord": {
+   "id": "RegistrationRecord",
+   "type": "object",
+   "properties": {
+    "regId": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "chennaiTimesApi.getBBCTamilDetail": {
+   "id": "chennaiTimesApi.getBBCTamilDetail",
+   "allowGet": true,
+   "parameters": {
+    "guid": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "guid"
+   ],
+   "returns": {
+    "$ref": "Feed"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getBBCTamilFeedList": {
+   "id": "chennaiTimesApi.getBBCTamilFeedList",
+   "allowGet": true,
+   "parameters": {
+    "category": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "category"
+   ],
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getBusinessFeeds": {
+   "id": "chennaiTimesApi.getBusinessFeeds",
+   "allowGet": true,
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getCinemaFeeds": {
+   "id": "chennaiTimesApi.getCinemaFeeds",
+   "allowGet": true,
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getDinakaranDetail": {
+   "id": "chennaiTimesApi.getDinakaranDetail",
+   "allowGet": true,
+   "parameters": {
+    "guid": {
+     "type": "string",
+     "required": true
+    },
+    "source": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "guid",
+    "source"
+   ],
+   "returns": {
+    "$ref": "Feed"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getDinakaranFeedList": {
+   "id": "chennaiTimesApi.getDinakaranFeedList",
+   "allowGet": true,
+   "parameters": {
+    "categoryId": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "categoryId"
+   ],
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getDinamalarDetail": {
+   "id": "chennaiTimesApi.getDinamalarDetail",
+   "allowGet": true,
+   "parameters": {
+    "category": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    },
+    "guid": {
+     "type": "string",
+     "required": true
+    },
+    "source": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "category",
+    "guid",
+    "source"
+   ],
+   "returns": {
+    "$ref": "Feed"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getDinamalarFeedList": {
+   "id": "chennaiTimesApi.getDinamalarFeedList",
+   "allowGet": true,
+   "parameters": {
+    "category": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "category"
+   ],
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getDinamaniDetail": {
+   "id": "chennaiTimesApi.getDinamaniDetail",
+   "allowGet": true,
+   "parameters": {
+    "guid": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "guid"
+   ],
+   "returns": {
+    "$ref": "Feed"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getDinamaniFeeds": {
+   "id": "chennaiTimesApi.getDinamaniFeeds",
+   "allowGet": true,
+   "parameters": {
+    "category": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "category"
+   ],
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getHeadLines": {
+   "id": "chennaiTimesApi.getHeadLines",
+   "allowGet": true,
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getIndiaFeeds": {
+   "id": "chennaiTimesApi.getIndiaFeeds",
+   "allowGet": true,
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getNakkheeranDetail": {
+   "id": "chennaiTimesApi.getNakkheeranDetail",
+   "allowGet": true,
+   "parameters": {
+    "guid": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "guid"
+   ],
+   "returns": {
+    "$ref": "Feed"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getNakkheeranFeedList": {
+   "id": "chennaiTimesApi.getNakkheeranFeedList",
+   "allowGet": true,
+   "parameters": {
+    "category": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "category"
+   ],
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getNewsDetail": {
+   "id": "chennaiTimesApi.getNewsDetail",
+   "allowGet": true,
+   "parameters": {
+    "category": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    },
+    "guid": {
+     "type": "string",
+     "required": true
+    },
+    "source": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "category",
+    "guid",
+    "source"
+   ],
+   "returns": {
+    "$ref": "Feed"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getOneIndiaDetail": {
+   "id": "chennaiTimesApi.getOneIndiaDetail",
+   "allowGet": true,
+   "parameters": {
+    "guid": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "guid"
+   ],
+   "returns": {
+    "$ref": "Feed"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getOneIndiaFeedList": {
+   "id": "chennaiTimesApi.getOneIndiaFeedList",
+   "allowGet": true,
+   "parameters": {
+    "category": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "category"
+   ],
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getSportsFeeds": {
+   "id": "chennaiTimesApi.getSportsFeeds",
+   "allowGet": true,
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getTamilNadu": {
+   "id": "chennaiTimesApi.getTamilNadu",
+   "allowGet": true,
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.getWorldFeeds": {
+   "id": "chennaiTimesApi.getWorldFeeds",
+   "allowGet": true,
+   "returns": {
+    "$ref": "FeedCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.listDevices": {
+   "id": "chennaiTimesApi.listDevices",
+   "allowGet": true,
+   "parameters": {
+    "count": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "count"
+   ],
+   "returns": {
+    "$ref": "CollectionResponse_RegistrationRecord"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.messagingEndpoint.sendMessage": {
+   "id": "chennaiTimesApi.messagingEndpoint.sendMessage",
+   "parameters": {
+    "message": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "message"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.register": {
+   "id": "chennaiTimesApi.register",
+   "parameters": {
+    "regId": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "regId"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "chennaiTimesApi.unregister": {
+   "id": "chennaiTimesApi.unregister",
+   "parameters": {
+    "regId": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "regId"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

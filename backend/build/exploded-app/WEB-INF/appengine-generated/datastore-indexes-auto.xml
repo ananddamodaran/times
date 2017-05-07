@@ -1,0 +1,12 @@
+<!-- Indices written at Sun, 7 May 2017 08:12:20 IST -->
+
+<datastore-indexes>
+
+    <!-- Used 9 times in query history -->
+    <datastore-index kind="Feed" ancestor="false" source="auto">
+        <property name="categoryId" direction="asc"/>
+        <property name="sourceId" direction="asc"/>
+        <property name="pubDate" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>
