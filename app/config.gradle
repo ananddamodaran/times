@@ -33,7 +33,9 @@ android {
                 "\"https://chennaitimes-staging.appspot.com/_ah/api/\""
 
         buildConfigField "String", "BACKEND_PROD",
-                "\"https://chennaitimes-alpha.appspot.com/_ah/api/\""
+                "\"https://chennaitimes-prod.appspot.com/_ah/api/\""
+        buildConfigField "String", "BACKEND_PROD_A",
+                "\"https://chennaitimes-prealpha.appspot.com/_ah/api/\""
 
         /**
          * Defines whether authentication is required or not. Only works once

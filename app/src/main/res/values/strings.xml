@@ -89,9 +89,10 @@
     <string name="invitation_message">"சென்னை டைம்ஸ் தமிழ் நியூஸ்" டவுன்லோட் செய்யுங்கள்</string>
 
     <string name="banner_ad_unit_id_dev">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="banner_ad_unit_id_prod">ca-app-pub-2966464045026289/2034406051</string>
+    <string name="banner_ad_unit_id_prod">ca-app-pub-9970722135669110/3878615783</string>
     <string name="native_ad_unit_id_dev">ca-app-pub-3940256099942544/1072772517</string>
     <string name="native_ad_unit_id_prod">ca-app-pub-2966464045026289/8022064054</string>
+    <string name="retry_detail">Not Data Availabe. Retry later</string>
 
 
 </resources>

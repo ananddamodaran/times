@@ -2,7 +2,6 @@ package com.viginfotech.chennaitimes;
 
 
 import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -19,6 +18,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,7 +48,6 @@ public class NewsFragment extends Fragment {
     private static final int LOADER_ID = 1000;
     private static final String STATE_POSITION = "selected_feed_position";
     private static final String STATE_POSITION_OFFSET ="selected_feed_position_offset" ;
-    private static ArrayList<LocalFeed> feedList;
 
     private int page;
     @Bind(R.id.listView) RecyclerView recyclerView;
@@ -157,7 +156,7 @@ public class NewsFragment extends Fragment {
         });
 
 
-        adapter = new NewsFeedAdapter(getContext(), feedList,null);
+        adapter = new NewsFeedAdapter(getContext(), null,null);
 
 
         recyclerView.setAdapter(adapter);
@@ -282,12 +281,13 @@ public class NewsFragment extends Fragment {
             adapter = new NewsFeedAdapter(getActivity(),feedList, new NewsFeedAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, LocalFeed feed, int pos) {
-                    ContentValues contentValues=new ContentValues();
+                    Log.d(TAG, "onItemClick: "+pos);
+                   /* ContentValues contentValues=new ContentValues();
                     contentValues.put(NewsContract.NewsEntry.COLUMN_READ_STATE,1);
                     getActivity().getContentResolver().
                             update(NewsContract.NewsEntry.CONTENT_URI,
                                     contentValues, NewsContract.NewsEntry.COLUMN_FEED_LINK +
-                                            " = ?", new String[]{feed.getGuid()});
+                                            " = ?", new String[]{feed.getGuid()});*/
 
                     selectedFeedToRead=pos;
                     if(feed.getDetailNews()==null && !isOnline(getActivity())){
@@ -304,9 +304,6 @@ public class NewsFragment extends Fragment {
                 }
             });
             adapter.notifyDataSetChanged();
-
-
-
             recyclerView.setAdapter(adapter);
             mLayoutManager.scrollToPositionWithOffset(selectedFeedToRead,overalldx);
         }
@@ -314,7 +311,7 @@ public class NewsFragment extends Fragment {
 
     @NonNull
     public static List<LocalFeed> getLocalFeeds(Cursor cursor) {
-        feedList=new ArrayList<>();
+        ArrayList<LocalFeed> feedList = new ArrayList<>();
         while (cursor != null && cursor.moveToNext()) {
 
             String title = cursor.getString(FeedsQuery.TITLE);

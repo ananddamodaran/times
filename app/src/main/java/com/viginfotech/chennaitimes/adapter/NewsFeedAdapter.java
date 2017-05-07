@@ -41,7 +41,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
             Collections.sort(mDataSet, Collections.reverseOrder(new Comparator<LocalFeed>() {
                 @Override
                 public int compare(LocalFeed lhs, LocalFeed rhs) {
-                    return (lhs).getPubDate().compareTo((lhs).getPubDate());
+                    return (lhs).getPubDate().compareTo((rhs).getPubDate());
                 }
             }));
         }

@@ -59,6 +59,8 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.content_detail_page,container,false);
         ButterKnife.bind(this,view);
+        mAdView = (AdView) view.findViewById(R.id.ad_view);
+
         LocalFeed json = getArguments().getParcelable(Constants.EXTRA_LOCAL_FEED);
         localFeed = json;
         if (localFeed!=null&&localFeed.getDetailNews() == null) {
@@ -81,6 +83,7 @@ public class DetailFragment extends Fragment {
                 divider.setVisibility(View.VISIBLE);
                 publisher.setText(DisplayUtil.getPublisherName(getContext(),localFeed.getSourceId()));
                 time.setText(TimeUtils.formatShortDate(localFeed.getPubDate()));
+                mAdView.setVisibility(View.VISIBLE);
                 if (localFeed.getImage() != null) {
                     thumbnail.setVisibility(View.VISIBLE);
                     Glide.with(this).load(localFeed.getImage()). placeholder(R.color.lighter_gray).into(thumbnail);
@@ -94,10 +97,11 @@ public class DetailFragment extends Fragment {
 
         }
 
-        mAdView = (AdView) view.findViewById(R.id.ad_view);
-        mAdView.setVisibility(View.VISIBLE);
+
 
         AdRequest adRequest = new AdRequest.Builder()
+        .addTestDevice("F3F6D8BBEE58C3B8C10DFE39B4A4166C")
+        //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
         mAdView.loadAd(adRequest);
@@ -186,13 +190,13 @@ public class DetailFragment extends Fragment {
                     thumbnail.setVisibility(View.VISIBLE);
                     Glide.with(getActivity()).load(localFeed.getImage()). placeholder(R.color.lighter_gray).into(thumbnail);
                 }
+                mAdView.setVisibility(View.VISIBLE);
 
                 ContentValues contentValues=new ContentValues();
                 contentValues.put(NewsContract.NewsEntry.COLUMN_FEED_DETAILED_TITLE,localFeed.getDetailedTitle());
                 contentValues.put(NewsContract.NewsEntry.COLUMN_FEED_THUMBNAIL,localFeed.getThumbnail());
                 contentValues.put(NewsContract.NewsEntry.COLUMN_FEED_IMAGE,localFeed.getImage());
                 contentValues.put(NewsContract.NewsEntry.COLUMN_FEED_DETAILED_NEWS,localFeed.getDetailNews());
-              //  contentValues.put(NewsContract.NewsEntry.COLUMN_READ_STATE,1);
                 getActivity(). getContentResolver().
                         update(NewsContract.NewsEntry.CONTENT_URI,
                                 contentValues, NewsContract.NewsEntry.COLUMN_FEED_LINK +
@@ -200,7 +204,7 @@ public class DetailFragment extends Fragment {
 
             } else {
                 pgbar.setVisibility(View.GONE);
-                detailNews.setText("null");
+                detailNews.setText(R.string.retry_detail);
 
             }
 

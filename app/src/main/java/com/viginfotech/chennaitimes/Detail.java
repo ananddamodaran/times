@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.viginfotech.chennaitimes.data.NewsContract;
@@ -41,7 +42,7 @@ public class Detail extends AppCompatActivity {
 
          category=getIntent().getIntExtra("category",-1);
         selectedFeedToRead=getIntent().getIntExtra("position",-1);
-
+        Log.d(TAG, "onCreate: "+category+ " " +selectedFeedToRead);
         mPager = (ViewPager) findViewById(R.id.detailPager);
         feeds= getFeedFromCursor(category);
         setupViewPager();
@@ -116,6 +117,7 @@ public class Detail extends AppCompatActivity {
                 @Override
                 public int compare(LocalFeed lhs, LocalFeed rhs) {
                     return lhs.getPubDate().compareTo(rhs.getPubDate());
+
                 }
             }));
 
@@ -160,8 +162,6 @@ public class Detail extends AppCompatActivity {
             mCurrentPagerItem=position;
             selectedFeedToRead=position;
             DetailFragment fragment = new DetailFragment();
-            LocalFeed localFeed=result.get(position);
-          //  Log.i(TAG, "getItem: Fragment "+localFeed.getTitle());
             Bundle args = new Bundle();
             args.putParcelable(Constants.EXTRA_LOCAL_FEED, result.get(position));
             fragment.setArguments(args);
