@@ -32,8 +32,8 @@ public class Dinakaran {
     public Dinakaran() {
     }
 
-    private static String getUri(int category){
-        switch (category){
+    private static String getUri(int category) {
+        switch (category) {
             case CATEGORY_TAMILNADU:
                 return Config.Dinakaran.DINAKARAN_TAMILNADU_URI;
             case CATEGORY_INDIA:
@@ -48,6 +48,7 @@ public class Dinakaran {
                 return "";
         }
     }
+
     public static List<Feed> queryDinakaranNews(int category) {
         List<Feed> feedList = null;
         switch (category) {
@@ -60,17 +61,16 @@ public class Dinakaran {
                 feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAKARAN, category);
                 if (feedList.size() == 0) {
                     System.out.println("Fetching from net " + category);
-                    feedList = UriFetch.fetchData(category, getUri(category));
+                    feedList = UriFetch.fetchDinakaranData(category, getUri(category));
 
                     if (feedList != null) {
 
                         feedList = removeDuplicates(Constants.SOURCE_DINAKARAN, Arrays.asList(category), feedList);
                         System.out.println("filtered size dinakaran" + feedList.size());
-                        if(feedList.size()>0) {
+                        if (feedList.size() > 0) {
                             ofy().save().entities(feedList).now();
                             feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAKARAN, category);
-                        }
-                        else{
+                        } else {
                             feedList = QueryUtils.queryLatest7Feeds(SOURCE_DINAKARAN, category);
 
                         }
@@ -80,42 +80,53 @@ public class Dinakaran {
                 }
 
                 return feedList;
-            default:return null;
+            default:
+                return null;
         }
     }
 
 
     public static Feed getDinakaranDetail(String guid) {
+
         try {
             Document doc;
             doc = Jsoup.connect(guid).get();
             Elements main_news = doc.getElementsByClass("main-news");
-            if (main_news != null &&main_news.size()>0) {
-                String detailedTitle=main_news.get(0).getElementsByTag("a").get(0).text();
+            String detailedTitle = null;
+            String imgSrc = null;
+            String detailDescription = null;
+            if (main_news != null && main_news.size() > 0) {
+                detailedTitle = main_news.get(0).getElementsByTag("h1").text();
+                imgSrc = main_news.get(0).getElementsByTag("img").attr("src");
+                detailDescription = main_news.get(0).getElementsByTag("p").text();
 
-                String imgSrc = main_news.get(0).getElementsByTag("img").attr("src");
-                String detailDescription = main_news.get(0).getElementsByTag("p").text();
-                Key<Feed> key = Key.create(Feed.class, guid);
-                Feed feed = ofy().load().key(key).now();
-                if(detailedTitle!=null) feed.setDetailedTitle(detailedTitle);
-                if(imgSrc!=null){
-                    feed.setImage(imgSrc);
-                    if(feed.getThumbnail()==null) feed.setThumbnail(imgSrc);
 
-                }
-                feed.setDetailNews(detailDescription);
-                ofy().save().entity(feed).now();
-
-                return feed;
             }
+            Elements leftcolumn = doc.getElementsByClass("leftcolumn");
+            if (leftcolumn != null && leftcolumn.size() > 0) {
+                detailedTitle = leftcolumn.get(0).getElementsByTag("h1").text();
+                imgSrc = leftcolumn.get(0).getElementsByTag("img").get(1).attr("src");
+                detailDescription = leftcolumn.get(0).getElementsByTag("p").text();
 
+
+            }
+            Key<Feed> key = Key.create(Feed.class, guid);
+            Feed feed = ofy().load().key(key).now();
+            if (detailedTitle != null) feed.setDetailedTitle(detailedTitle);
+            if (imgSrc != null) {
+                feed.setImage(imgSrc);
+                if (feed.getThumbnail() == null) feed.setThumbnail(imgSrc);
+
+            }
+            feed.setDetailNews(detailDescription);
+            ofy().save().entity(feed).now();
+
+            return feed;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
 
-
-        return null;
     }
 
 }

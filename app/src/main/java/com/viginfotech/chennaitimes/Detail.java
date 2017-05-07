@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import static com.viginfotech.chennaitimes.NewsFragment.FeedsQuery;
 
 
@@ -58,12 +59,7 @@ public class Detail extends AppCompatActivity {
         mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(NewsContract.NewsEntry.COLUMN_READ_STATE, 1);
-                getContentResolver().
-                        update(NewsContract.NewsEntry.CONTENT_URI,
-                                contentValues, NewsContract.NewsEntry.COLUMN_FEED_LINK +
-                                        " = ?", new String[]{feeds.get(position).getGuid()});
+               markRead(position);
             }
 
             @Override
@@ -72,6 +68,15 @@ public class Detail extends AppCompatActivity {
             }
         });
         mPager.setCurrentItem(selectedFeedToRead);
+    }
+
+    private void markRead(int position) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NewsContract.NewsEntry.COLUMN_READ_STATE, 1);
+        getContentResolver().
+                update(NewsContract.NewsEntry.CONTENT_URI,
+                        contentValues, NewsContract.NewsEntry.COLUMN_FEED_LINK +
+                                " = ?", new String[]{feeds.get(position).getGuid()});
     }
 
     public List<LocalFeed> getFeedFromCursor(int category) {
@@ -165,6 +170,7 @@ public class Detail extends AppCompatActivity {
             Bundle args = new Bundle();
             args.putParcelable(Constants.EXTRA_LOCAL_FEED, result.get(position));
             fragment.setArguments(args);
+
             return fragment;
 
         }

@@ -5,7 +5,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="com.androidnanban.chennaitime.Detail"
+            tools:context="com.viginfotech.chennaitimes.Detail"
             tools:showIn="@layout/activity_detail"
             android:scrollbarStyle="outsideOverlay"
             android:fitsSystemWindows="true"
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_centerInParent="true"
         />
     <ScrollView
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             ads:adSize="BANNER"
-            android:visibility="invisible"
+            android:visibility="gone"
             ads:adUnitId="@string/banner_ad_unit_id_prod"
             android:layout_margin="4dp"
             />

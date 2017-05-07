@@ -53,65 +53,44 @@ public class UriFetch {
         }
     }
 
-    public static List<Feed> fetchData(int categoryId, String uri) {
+    public static List<Feed> fetchDinakaranData(int categoryId, String uri) {
         Document doc;
         List<Feed> feedList = new ArrayList<>();
         try {
             doc = Jsoup.connect(uri).timeout(10000).get();
 
-            Elements inboxLeft = doc.getElementsByClass("inn-box-left");
-            if (inboxLeft != null&&inboxLeft.size()>0) {
-                Elements inboxChildren = inboxLeft.get(0).getElementsByClass("inner-news-box-1");
-                for (Element element : inboxChildren) {
+            Elements newslist=doc.getElementsByClass("news-list-page");
+            if(newslist!=null){
+
+                Elements ul = doc.select("div.news-list-page > ul");
+                Elements li = ul.select("li");
+                for (int i = 0; i < li.size(); i++) {
+                   String title=li.get(i).select("h1 > a").text();
+                    String guid="http://www.dinakaran.com/"+li.get(i).select("h1 > a").attr("href");
+
+                    String summary=li.get(i).select("p").text();
+                    String pubDate= li.get(i).select("span").text();
                     Feed feed = new Feed();
-                    Elements aTag = element.getElementsByTag("a");
-                    String title = aTag.get(0).text();
-                    String link = "http://www.dinakaran.com/" + aTag.get(0).attr("href");
-                    String imgSrc = aTag.get(1).getElementsByTag("img").attr("src");
-                    String description = element.getElementsByTag("p").text();
-                    String pubDate = element.getElementsByTag("h5").text();
-                    /*pubDate=pubDate.substring(0, pubDate.lastIndexOf(" "));
-                    pubDate=pubDate.substring(0, pubDate.lastIndexOf(" "));
-                    Date date=TimeUtils.parseDinakaranTimeStamp(pubDate);
-                    date=(date==null)?new Date():new Date();
-*/
                     feed.setTitle(title);
 
-                    feed.setGuid(link);
-                    feed.setSummary(description);
+                    feed.setGuid(guid);
+                    feed.setSummary(summary);
                     long now=System.currentTimeMillis();
                     feed.setPubDate(now);
-                   // feed.setUpdate(now);
 
-                    feed.setThumbnail(imgSrc);
+
+
                     feed.setCategoryId(categoryId);
                     feed.setSourceId(Constants.SOURCE_DINAKARAN);
                     feedList.add(feed);
                 }
-            }
-            Elements inboxBottom = doc.getElementsByClass("box-left-normal");
-            if (inboxBottom != null&&inboxBottom.size()>0) {
-                Elements inboxChildren = inboxBottom.get(0).getElementsByClass("inner-news-box-1");
-                for (Element element : inboxChildren) {
-                    Feed feed = new Feed();
-                    Elements aTag = element.getElementsByTag("a");
-                    String title = aTag.get(0).text();
-                    String link = "http://www.dinakaran.com/" + aTag.get(0).attr("href");
-                    String imgSrc = aTag.get(1).getElementsByTag("img").attr("src");
-                    String description = element.getElementsByTag("p").text();
-                    String pubDate = element.getElementsByTag("h5").text();
 
-                    feed.setTitle(title);
-                    feed.setGuid(link);
-                    feed.setSummary(description);
-                    long now=System.currentTimeMillis();
-                    feed.setPubDate(now);
-                    feed.setThumbnail(imgSrc);
-                    feed.setCategoryId(categoryId);
-                    feed.setSourceId(Constants.SOURCE_DINAKARAN);
-                    feedList.add(feed);
-                }
+
             }
+
+
+
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

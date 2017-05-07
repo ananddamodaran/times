@@ -65,7 +65,7 @@ public class DinakaranEndpoint {
     }
 
     @ApiMethod(name = "getDinakaranDetail", path = "dinakaran/detail")
-    public Feed getDinakaranDetail(@Named("guid") String guid, @Named("source") int sourceId) {
+    public Feed getDinakaranDetail(@Named("guid") String guid) {
 
         // TODO: 2/8/16 detail from db if null then get from server
         return Dinakaran.getDinakaranDetail(guid);

@@ -106,11 +106,11 @@ public class UpdateHelper {
 
     public static List<Feed> updateDinakaran() {
         System.out.println("dinakaran");
-        List<Feed> feedListtamil = UriFetch.fetchData(CATEGORY_TAMILNADU, Config.Dinakaran.DINAKARAN_TAMILNADU_URI);
-        List<Feed> feedListIndia = UriFetch.fetchData(CATEGORY_INDIA, Config.Dinakaran.DINAKARAN_INDIA_URI);
-        List<Feed> feedListWorld = UriFetch.fetchData(CATEGORY_WORLD, Config.Dinakaran.DINAKARAN_WORLD_URI);
-        List<Feed> feedListBusiness = UriFetch.fetchData(CATEGORY_BUSINESS, Config.Dinakaran.DINAKARAN_BUSINESS_URI);
-        List<Feed> feedListSports = UriFetch.fetchData(CATEGORY_SPORTS, Config.Dinakaran.DINAKARAN_SPORTS_URI);
+        List<Feed> feedListtamil = UriFetch.fetchDinakaranData(CATEGORY_TAMILNADU, Config.Dinakaran.DINAKARAN_TAMILNADU_URI);
+        List<Feed> feedListIndia = UriFetch.fetchDinakaranData(CATEGORY_INDIA, Config.Dinakaran.DINAKARAN_INDIA_URI);
+        List<Feed> feedListWorld = UriFetch.fetchDinakaranData(CATEGORY_WORLD, Config.Dinakaran.DINAKARAN_WORLD_URI);
+        List<Feed> feedListBusiness = UriFetch.fetchDinakaranData(CATEGORY_BUSINESS, Config.Dinakaran.DINAKARAN_BUSINESS_URI);
+        List<Feed> feedListSports = UriFetch.fetchDinakaranData(CATEGORY_SPORTS, Config.Dinakaran.DINAKARAN_SPORTS_URI);
 
         List<Feed> allFeeds = new ArrayList<Feed>();
         if (feedListtamil != null) {
