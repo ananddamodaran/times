@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.viginfotech.chennaitimes.Constants;
 import com.viginfotech.chennaitimes.LocalFeed;
+import com.viginfotech.chennaitimes.R;
 import com.viginfotech.chennaitimes.util.GrayscaleTransformation;
 import com.viginfotech.chennaitimes.util.TimeUtils;
 

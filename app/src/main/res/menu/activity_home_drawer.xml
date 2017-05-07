@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+
+
+        >
+
+        <item
+            android:id="@+id/action_headlines"
+            android:title="@string/action_headlines"
+            android:checked="true"
+            android:icon="@drawable/headlines"
+            />
+        <item
+            android:id="@+id/action_tamilnadu"
+            android:title="@string/action_tamilnadu"
+            android:icon="@drawable/tamil_nadu"
+            />
+        <item
+            android:id="@+id/action_india"
+            android:title="@string/action_india"
+            android:icon="@drawable/india"
+            />
+        <item
+            android:id="@+id/action_world"
+            android:title="@string/action_world"
+            android:icon="@drawable/globe"
+            />
+        <item
+            android:id="@+id/action_business"
+            android:title="@string/action_business"
+            android:icon="@drawable/ic_business"
+            />
+        <item
+            android:id="@+id/action_sports"
+            android:title="@string/action_sports"
+            android:icon="@drawable/sports"
+            />
+        <item
+            android:id="@+id/action_cinema"
+            android:title="@string/action_cinema"
+            android:icon="@drawable/movie"
+            />
+        <!--<item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Import"/>
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Gallery"/>
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Slideshow"/>
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Tools"/-->>
+    </group>
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_people"
+                android:title="@string/invite_friends"/>
+        </menu>
+    </item>
+  <!--  <item android:title="Others" >
+        <menu>
+            <item
+                android:id="@+id/about"
+
+                android:title="About"/>
+            <item
+                android:id="@+id/otherApps"
+
+                android:title="Other Apps"/>
+        </menu>
+    </item>-->
+
+</menu>

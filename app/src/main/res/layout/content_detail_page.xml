@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="com.androidnanban.chennaitime.Detail"
+            tools:showIn="@layout/activity_detail"
+            android:scrollbarStyle="outsideOverlay"
+            android:fitsSystemWindows="true"
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <ProgressBar
+        android:id="@+id/pgbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:id="@+id/scrollview"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        >
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/transparent_background_pattern"
+            android:visibility="gone"
+            android:fitsSystemWindows="true"
+
+            />
+        <ImageView
+            android:id="@+id/publisherlogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:src="@drawable/transparent_background_pattern"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2sp"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceLarge" />
+<View
+    android:id="@+id/divider"
+    android:layout_width="100dp"
+    android:layout_height="2dp"
+    android:layout_gravity="center"
+    android:background="@android:color/darker_gray"
+    android:layout_margin="8dp"
+    android:visibility="gone"
+
+    />
+        <TextView
+            android:id="@+id/publisher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium" />
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/ad_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            android:visibility="invisible"
+            ads:adUnitId="@string/banner_ad_unit_id_prod"
+            android:layout_margin="4dp"
+            />
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="16sp"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="#292f33" />
+
+    </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

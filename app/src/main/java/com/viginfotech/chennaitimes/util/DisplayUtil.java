@@ -7,16 +7,16 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
-import com.androidnanban.chennaitime.Constants;
-import com.androidnanban.chennaitime.R;
+import com.viginfotech.chennaitimes.Constants;
+import com.viginfotech.chennaitimes.R;
 
-import static com.androidnanban.chennaitime.Constants.CATEGORY_BUSINESS;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_CINEMA;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_HEADLINES;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_INDIA;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_SPORTS;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_TAMILNADU;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_WORLD;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_BUSINESS;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_CINEMA;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_HEADLINES;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_INDIA;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_SPORTS;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_TAMILNADU;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_WORLD;
 
 
 /**

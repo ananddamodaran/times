@@ -19,13 +19,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.androidnanban.chennaitime.util.DisplayUtil;
-import com.androidnanban.chennaitime.util.PrefUtils;
-import com.androidnanban.chennaitime.util.ZoomOutPageTransformer;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.analytics.FirebaseAnalytics;
+import com.viginfotech.chennaitimes.util.DisplayUtil;
+import com.viginfotech.chennaitimes.util.PrefUtils;
+import com.viginfotech.chennaitimes.util.ZoomOutPageTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +32,13 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.androidnanban.chennaitime.Constants.CATEGORY_BUSINESS;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_CINEMA;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_HEADLINES;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_INDIA;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_SPORTS;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_TAMILNADU;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_WORLD;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_BUSINESS;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_CINEMA;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_HEADLINES;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_INDIA;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_SPORTS;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_TAMILNADU;
+import static com.viginfotech.chennaitimes.Constants.CATEGORY_WORLD;
 
 
 public class HomeActivity extends AppCompatActivity
@@ -65,7 +64,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+       // FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

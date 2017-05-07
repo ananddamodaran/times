@@ -12,15 +12,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.androidnanban.chennaitime.data.NewsContract;
-import com.androidnanban.chennaitime.util.CloudEndpointBuilderHelper;
-import com.androidnanban.chennaitime.util.DisplayUtil;
-import com.androidnanban.chennaitime.util.TimeUtils;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.news.digitalhunt.chennaiTimesApi.ChennaiTimesApi;
-import com.news.digitalhunt.chennaiTimesApi.model.Feed;
+import com.viginfotech.chennaiTimesApi.ChennaiTimesApi;
+import com.viginfotech.chennaiTimesApi.model.Feed;
+import com.viginfotech.chennaitimes.data.NewsContract;
+import com.viginfotech.chennaitimes.util.CloudEndpointBuilderHelper;
+import com.viginfotech.chennaitimes.util.DisplayUtil;
+import com.viginfotech.chennaitimes.util.TimeUtils;
 
 import org.jsoup.Jsoup;
 
@@ -28,20 +28,6 @@ import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
-import static com.androidnanban.chennaitime.Constants.CATEGORY_BUSINESS;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_CINEMA;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_HEADLINES;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_INDIA;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_SPORTS;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_TAMILNADU;
-import static com.androidnanban.chennaitime.Constants.CATEGORY_WORLD;
-import static com.androidnanban.chennaitime.Constants.SOURCE_BBCTAMIL;
-import static com.androidnanban.chennaitime.Constants.SOURCE_DINAKARAN;
-import static com.androidnanban.chennaitime.Constants.SOURCE_DINAMALAR;
-import static com.androidnanban.chennaitime.Constants.SOURCE_DINAMANI;
-import static com.androidnanban.chennaitime.Constants.SOURCE_NAKKHEERAN;
-import static com.androidnanban.chennaitime.Constants.SOURCE_ONEINDIA;
 
 
 /**
@@ -232,56 +218,10 @@ public class DetailFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-       /* mTracker.send(new HitBuilders.EventBuilder()
 
-                .setCategory(getCategory(localFeed))
-                .setAction("View")
-                .setLabel(getSource(localFeed))
-                .set("&t", "screenview")
-
-                .build());
-*/
 
     }
 
-    private String getSource(LocalFeed localFeed) {
-        switch (localFeed.getSourceId()){
-            case SOURCE_DINAKARAN:
-                return getString(R.string.dinakaran_text);
-            case SOURCE_DINAMALAR:
-                return getString(R.string.dinamalar_text);
-            case SOURCE_DINAMANI:
-                return getString(R.string.dinamani_text);
-            case SOURCE_NAKKHEERAN:
-                return getString(R.string.nakkheeran_text);
-            case SOURCE_ONEINDIA:
-                return getString(R.string.oneindia_text);
-            case SOURCE_BBCTAMIL:
-                return getString(R.string.bbctamil_text);
-
-            default: return null;
-        }
-    }
-
-    private String getCategory(LocalFeed localFeed) {
-        switch (localFeed.getCategoryId()){
-            case CATEGORY_HEADLINES:
-                return getString(R.string.headlines_text);
-            case CATEGORY_TAMILNADU:
-                return getString(R.string.tamilnadu_text);
-            case CATEGORY_INDIA:
-                return getString(R.string.india_text);
-            case CATEGORY_WORLD:
-                return getString(R.string.world_text);
-            case CATEGORY_BUSINESS:
-                return getString(R.string.business_text);
-            case CATEGORY_SPORTS:
-                return getString(R.string.sports_text);
-            case CATEGORY_CINEMA:
-                return getString(R.string.cinema_text);
-            default: return null;
-        }
-    }
 
 
 }

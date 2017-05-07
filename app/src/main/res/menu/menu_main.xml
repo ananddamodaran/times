@@ -1,0 +1,51 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ananddamodaran.newsaggregatortest.MainActivity">
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:title="@string/action_headlines"
+        app:showAsAction="always"
+        android:icon="@mipmap/ic_refresh_white_48dp"
+        />
+    <item
+        android:id="@+id/action_headlines"
+        android:orderInCategory="100"
+        android:title="@string/action_headlines"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_tamilnadu"
+        android:orderInCategory="100"
+        android:title="@string/action_tamilnadu"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_india"
+        android:orderInCategory="100"
+        android:title="@string/action_india"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_world"
+        android:orderInCategory="100"
+        android:title="@string/action_world"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_business"
+        android:orderInCategory="100"
+        android:title="@string/action_business"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sports"
+        android:orderInCategory="100"
+        android:title="@string/action_sports"
+        app:showAsAction="never"
+        android:icon="@drawable/sports"
+
+        />
+    <item
+        android:id="@+id/action_cinema"
+        android:orderInCategory="100"
+        android:title="@string/action_cinema"
+        app:showAsAction="never" />
+</menu>

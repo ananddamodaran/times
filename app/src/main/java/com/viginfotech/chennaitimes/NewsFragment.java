@@ -25,10 +25,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.androidnanban.chennaitime.adapter.NewsFeedAdapter;
-import com.androidnanban.chennaitime.data.NewsContract;
-import com.androidnanban.chennaitime.sync.TriggerRefresh;
-import com.androidnanban.chennaitime.util.ChennaiTimesPreferences;
+import com.viginfotech.chennaitimes.adapter.NewsFeedAdapter;
+import com.viginfotech.chennaitimes.data.NewsContract;
+import com.viginfotech.chennaitimes.sync.TriggerRefresh;
+import com.viginfotech.chennaitimes.util.ChennaiTimesPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.androidnanban.chennaitime.util.NetworkUtil.isOnline;
+import static com.viginfotech.chennaitimes.util.NetworkUtil.isOnline;
 
 
 /**

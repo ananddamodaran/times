@@ -11,7 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.androidnanban.chennaitime.data.NewsContract;
+import com.viginfotech.chennaitimes.data.NewsContract;
 
 import org.jsoup.Jsoup;
 
@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import static com.androidnanban.chennaitime.NewsFragment.FeedsQuery;
+import static com.viginfotech.chennaitimes.NewsFragment.FeedsQuery;
 
 
 public class Detail extends AppCompatActivity {
@@ -79,7 +78,7 @@ public class Detail extends AppCompatActivity {
 
 
         final Cursor cursor =getContentResolver().query(NewsContract.NewsEntry.CONTENT_URI,
-                FeedsQuery.PROJECTIONS, NewsContract.NewsEntry.COLUMN_FEED_CATEGORY + " = ?"
+                NewsFragment.FeedsQuery.PROJECTIONS, NewsContract.NewsEntry.COLUMN_FEED_CATEGORY + " = ?"
                 , new String[]{String.valueOf(category)}, null);
 
         try {
