@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1043818507475-14run6q20829ec3bdqlojh4l8uprtto1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.viginfotech.chennaitimes",
+            "certificate_hash": "184d63706b6f08b4bea99e773bc3e5d92a1f2d04"
+          }
+        },
+        {
           "client_id": "1043818507475-1cton8dbo74l5e5e0sumqp4tje2q3rtk.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043818507475-1cton8dbo74l5e5e0sumqp4tje2q3rtk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

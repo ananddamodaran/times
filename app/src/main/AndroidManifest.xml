@@ -16,7 +16,21 @@
         android:theme="@style/Theme.DesignDemo" >
         <activity
             android:name=".Detail"
-            android:label="@string/title_activity_detail" />
+            android:label="@string/title_activity_detail" >
+            <intent-filter>
+
+                <action android:name="com.viginfotech.chennaitimes_TARGET_NOTIFICATION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="chennaitimes-news.appspot.com" android:scheme="http"/>
+                <data android:host="chennaitimes-news.appspot.com" android:scheme="https"/>
+            </intent-filter>
+            </activity>
 
 
         <meta-data
@@ -57,9 +71,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="b814da9118a3a74d3fddadbbeb24498e64c774f2" />
+
     </application>
 
 </manifest>

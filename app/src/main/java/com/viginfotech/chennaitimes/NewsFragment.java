@@ -235,7 +235,6 @@ public class NewsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-       // Log.i(TAG, "onActivityCreated: ");
         if(savedInstanceState!=null) {
             selectedFeedToRead = savedInstanceState.getInt(STATE_POSITION);
             overalldx = savedInstanceState.getInt(STATE_POSITION_OFFSET);
@@ -279,15 +278,10 @@ public class NewsFragment extends Fragment {
         protected void onPostExecute(List<LocalFeed> feedList) {
             super.onPostExecute(feedList);
             adapter = new NewsFeedAdapter(getActivity(),feedList, new NewsFeedAdapter.OnItemClickListener() {
+
                 @Override
                 public void onItemClick(View view, LocalFeed feed, int pos) {
                     Log.d(TAG, "onItemClick: "+pos);
-                   /* ContentValues contentValues=new ContentValues();
-                    contentValues.put(NewsContract.NewsEntry.COLUMN_READ_STATE,1);
-                    getActivity().getContentResolver().
-                            update(NewsContract.NewsEntry.CONTENT_URI,
-                                    contentValues, NewsContract.NewsEntry.COLUMN_FEED_LINK +
-                                            " = ?", new String[]{feed.getGuid()});*/
 
                     selectedFeedToRead=pos;
                     if(feed.getDetailNews()==null && !isOnline(getActivity())){

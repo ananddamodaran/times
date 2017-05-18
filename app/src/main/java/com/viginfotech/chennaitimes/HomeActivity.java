@@ -43,9 +43,10 @@ import static com.viginfotech.chennaitimes.Constants.CATEGORY_WORLD;
 
 
 public class HomeActivity extends AppCompatActivity
-        implements ViewPager.OnPageChangeListener, NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
+        implements ViewPager.OnPageChangeListener,
+        NavigationView.OnNavigationItemSelectedListener,
+        GoogleApiClient.OnConnectionFailedListener {
 
-   // private static final String TAG = HomeActivity.class.getSimpleName();
     @Bind(R.id.container)
    ViewPager mViewPager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -66,6 +67,7 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -65,6 +65,7 @@
     <string name="native_ad_unit_id_dev">ca-app-pub-3940256099942544/1072772517</string>
     <string name="native_ad_unit_id_prod">ca-app-pub-2966464045026289/8022064054</string>
     <string name="retry_detail">Not Data Availabe. Retry later</string>
+    <string name="app_code">eyfd6</string>
 
 
 </resources>

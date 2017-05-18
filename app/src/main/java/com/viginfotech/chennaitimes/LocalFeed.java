@@ -161,6 +161,17 @@ public class LocalFeed  implements Parcelable {
         dest.writeInt(readState);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null)                return false;
+        if(!(obj instanceof LocalFeed)) return false;
+        LocalFeed other=(LocalFeed)obj;
+       return other.guid.equals(this.guid);
 
+    }
 
+    @Override
+    public int hashCode() {
+        return  this.guid.hashCode();
+    }
 }

@@ -24,6 +24,7 @@
         android:src="@android:drawable/ic_menu_share"
         android:clickable="true"
         android:onClick="shareContent"
+        android:visibility="invisible"
 
         />
 

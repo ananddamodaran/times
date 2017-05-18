@@ -33,7 +33,7 @@ import butterknife.ButterKnife;
 /**
  * Created by anand on 3/27/16.
  */
-public class DetailFragment extends Fragment {
+public class DetailFragment extends Fragment  {
     private static final String TAG = "DetailFragment";
     @Bind(R.id.detail)
     TextView detailNews;
@@ -60,6 +60,8 @@ public class DetailFragment extends Fragment {
         View view =inflater.inflate(R.layout.content_detail_page,container,false);
         ButterKnife.bind(this,view);
         mAdView = (AdView) view.findViewById(R.id.ad_view);
+
+       // getDeepLinkInvitation();
 
         LocalFeed json = getArguments().getParcelable(Constants.EXTRA_LOCAL_FEED);
         localFeed = json;
@@ -132,6 +134,10 @@ public class DetailFragment extends Fragment {
         }
         super.onDestroy();
     }
+
+
+
+
 
     public class GetDetailTask extends AsyncTask<LocalFeed, Void, Feed> {
         private ChennaiTimesApi myApiService;
