@@ -43,10 +43,7 @@ public class TriggerRefresh extends IntentService {
     public void onCreate() {
         super.onCreate();
         if (myApiService == null) {
-
             myApiService = CloudEndpointBuilderHelper.getEndpoints();
-
-
         }
     }
 

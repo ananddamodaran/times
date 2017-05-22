@@ -5,4 +5,5 @@ package com.viginfotech.chennaitimes;
  */
 public class Config {
     public static final String ROOT_URL = BuildConfig.BACKEND_PROD;
+    public static final String DYNAMIC_LINK=BuildConfig.DYNAMIC_LINK;
 }

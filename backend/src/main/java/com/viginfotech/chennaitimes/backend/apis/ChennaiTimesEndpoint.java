@@ -216,4 +216,8 @@ public class ChennaiTimesEndpoint {
         }
 
     }
+    @ApiMethod(name="getShortURL")
+    public Feed getShortURL(){
+        return null;
+    }
 }

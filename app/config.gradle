@@ -37,6 +37,9 @@ android {
         buildConfigField "String", "BACKEND_PROD_A",
                 "\"https://chennaitimes-prealpha.appspot.com/_ah/api/\""
 
+        buildConfigField "String", "DYNAMIC_LINK",
+                "\"https://eyfd6.app.goo.gl/Tbeh\""
+
         /**
          * Defines whether authentication is required or not. Only works once
          * deployed on production AppEngine, not on local server.

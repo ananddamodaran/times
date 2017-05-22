@@ -250,7 +250,7 @@ public class NewsFragment extends Fragment {
         @Override
         protected List<LocalFeed> doInBackground(Integer... params) {
              Cursor cursor=null;
-            try {
+            try {q
 
                 int category = params[0];
                  cursor= getActivity().getContentResolver().query(NewsContract.NewsEntry.CONTENT_URI,

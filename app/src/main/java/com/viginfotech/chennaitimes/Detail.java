@@ -25,6 +25,8 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.viginfotech.chennaitimes.data.NewsContract;
 
+import org.jsoup.Jsoup;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -243,10 +245,17 @@ public class Detail extends AppCompatActivity implements GoogleApiClient.OnConne
                 .appendQueryParameter("guid",guid);
 
         final Uri deepLink = buildDeepLink(builder.build(), 0, false);
+        getShortURL(deepLink);
+       String title=Jsoup.parse(feed.getTitle().trim()).text();
 
-        share(deepLink.toString());
+        share(title +"\n"+Config.DYNAMIC_LINK+"\n via "+getString(R.string.app_name_tamil));
 
     }
+
+    private void getShortURL(Uri deepLink) {
+
+    }
+
     private void share(String msg) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
