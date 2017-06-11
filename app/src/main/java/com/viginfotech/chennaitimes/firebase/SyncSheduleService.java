@@ -6,6 +6,8 @@ import android.util.Log;
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 import com.viginfotech.chennaiTimesApi.ChennaiTimesApi;
+import com.viginfotech.chennaitimes.Config;
+import com.viginfotech.chennaitimes.data.NewsContract;
 import com.viginfotech.chennaitimes.sync.TriggerRefresh;
 import com.viginfotech.chennaitimes.util.CloudEndpointBuilderHelper;
 
@@ -30,7 +32,11 @@ public class SyncSheduleService extends JobService {
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
         Log.i(TAG, "onStartJob: ");
+        if(jobParameters.getTag().equals(Config.SYNCSCHEDULE_TAG))
         syncAll();
+        else if(jobParameters.getTag().equals(Config.TRUNCATE_TAG)){
+            getContentResolver().delete(NewsContract.NewsEntry.CONTENT_URI, null,null);
+        }
         return false;
     }
 

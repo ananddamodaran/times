@@ -61,8 +61,6 @@ public class HomeActivity extends AppCompatActivity
     @Bind(R.id.drawer_layout)
     DrawerLayout drawer;
     public static final int REQUEST_INVITE = 2000;
-
-
     public static final int ITEMS_PER_AD = 8;
 
 
@@ -80,20 +78,27 @@ public class HomeActivity extends AppCompatActivity
         dispatcher.mustSchedule(
                 dispatcher.newJobBuilder()
                         .setService(SyncSheduleService.class)
-                        .setTag("SyncSheduleService")
+                        .setTag(Config.SYNCSCHEDULE_TAG)
                         .setRecurring(true)
-                        .setTrigger(Trigger.executionWindow(5, 60))
+                        .setTrigger(Trigger.executionWindow(5, 60*10))//every 10 mins
                         .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                         .setLifetime(Lifetime.FOREVER)
                         .build()
         );
+        dispatcher.mustSchedule(
+                dispatcher.newJobBuilder()
+                        .setService(SyncSheduleService.class)
+                        .setTag(Config.TRUNCATE_TAG)
+                        .setRecurring(true)
+                        .setTrigger(Trigger.executionWindow(5, 60*60*24)) //every 24 hour
+                        .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                        .setLifetime(Lifetime.FOREVER)
+                        .build()
+
+        );
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
