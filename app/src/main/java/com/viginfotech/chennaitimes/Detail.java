@@ -232,7 +232,7 @@ public class Detail extends AppCompatActivity implements GoogleApiClient.OnConne
     public void shareContent(View view) {
         feeds=getFeedFromCursor(category);
         LocalFeed feed= feeds.get((feeds.size()==mCurrentPagerItem+1)?mCurrentPagerItem:mCurrentPagerItem-1);
-        String guid=feed.getGuid();
+      /*  String guid=feed.getGuid();
         String category=String.valueOf(feed.getCategoryId());
         String source=String.valueOf(feed.getSourceId());
         // Build the link with all required parameters
@@ -245,7 +245,8 @@ public class Detail extends AppCompatActivity implements GoogleApiClient.OnConne
                 .appendQueryParameter("guid",guid);
 
         final Uri deepLink = buildDeepLink(builder.build(), 0, false);
-        getShortURL(deepLink);
+        getShortURL(deepLink);*/
+
        String title=Jsoup.parse(feed.getTitle().trim()).text();
 
         share(title +"\n"+Config.DYNAMIC_LINK+"\n via "+getString(R.string.app_name_tamil));

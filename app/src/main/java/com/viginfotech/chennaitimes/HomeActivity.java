@@ -19,10 +19,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.viginfotech.chennaitimes.firebase.SyncSheduleService;
 import com.viginfotech.chennaitimes.util.DisplayUtil;
 import com.viginfotech.chennaitimes.util.PrefUtils;
 import com.viginfotech.chennaitimes.util.ZoomOutPageTransformer;
@@ -67,7 +73,20 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
+        FirebaseJobDispatcher dispatcher =
+                new FirebaseJobDispatcher(
+                        new GooglePlayDriver(HomeActivity.this)
+                );
+        dispatcher.mustSchedule(
+                dispatcher.newJobBuilder()
+                        .setService(SyncSheduleService.class)
+                        .setTag("SyncSheduleService")
+                        .setRecurring(true)
+                        .setTrigger(Trigger.executionWindow(5, 60))
+                        .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                        .setLifetime(Lifetime.FOREVER)
+                        .build()
+        );
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

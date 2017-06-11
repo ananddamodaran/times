@@ -12,6 +12,7 @@ import com.viginfotech.chennaitimes.LocalFeed;
 import com.viginfotech.chennaitimes.data.NewsContract;
 import com.viginfotech.chennaitimes.util.ChennaiTimesPreferences;
 import com.viginfotech.chennaitimes.util.CloudEndpointBuilderHelper;
+import com.viginfotech.chennaitimes.util.NetworkUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class TriggerRefresh extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        if(!NetworkUtil.isOnline(this)) return;
         Bundle bundle = intent.getExtras();
         int category = -1;
         if (bundle != null)
