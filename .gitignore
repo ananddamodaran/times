@@ -8,4 +8,5 @@
 /backend/build/*
 /captures
 .externalNativeBuild
-*.apk
+/app/*.apk
+*.jks
