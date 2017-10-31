@@ -292,7 +292,6 @@ public class NewsFragment extends Fragment {
                     Intent intent = new Intent(getActivity().getBaseContext(), Detail.class);
                     intent.putExtra("category",feed.getCategoryId());
                     intent.putExtra("position",selectedFeedToRead);
-
                     startActivity(intent);
 
                 }

@@ -96,6 +96,8 @@ public class HomeActivity extends AppCompatActivity
                         .build()
 
         );
+
+
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

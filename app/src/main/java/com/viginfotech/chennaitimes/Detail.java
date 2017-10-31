@@ -249,7 +249,7 @@ public class Detail extends AppCompatActivity implements GoogleApiClient.OnConne
 
        String title=Jsoup.parse(feed.getTitle().trim()).text();
 
-        share(title +"\n"+Config.DYNAMIC_LINK+"\n via "+getString(R.string.app_name_tamil));
+        share(title +"\n"+Config.DYNAMIC_LINK+"\n Install "+getString(R.string.app_name_tamil));
 
     }
 

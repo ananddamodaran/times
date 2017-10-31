@@ -1,5 +1,7 @@
 package com.viginfotech.chennaitimes.firebase;
 
+import android.util.Log;
+
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -16,7 +18,7 @@ public class CTAppFirebaseInstanceIdService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
 
         String token = FirebaseInstanceId.getInstance().getToken();
-
+        Log.i(TAG, "onTokenRefresh: "+token);
         FirebaseMessaging.getInstance()
                 .subscribeToTopic(FRIENDLY_ENGAGE_TOPIC);
     }

@@ -1,21 +1,40 @@
 package com.viginfotech.chennaitimes.sync;
 
 import android.app.IntentService;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.viginfotech.chennaiTimesApi.ChennaiTimesApi;
 import com.viginfotech.chennaiTimesApi.model.Feed;
+import com.viginfotech.chennaitimes.Detail;
 import com.viginfotech.chennaitimes.LocalFeed;
+import com.viginfotech.chennaitimes.NewsFragment;
+import com.viginfotech.chennaitimes.R;
 import com.viginfotech.chennaitimes.data.NewsContract;
 import com.viginfotech.chennaitimes.util.ChennaiTimesPreferences;
 import com.viginfotech.chennaitimes.util.CloudEndpointBuilderHelper;
 import com.viginfotech.chennaitimes.util.NetworkUtil;
 
+import org.jsoup.Jsoup;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
 
@@ -87,6 +106,10 @@ public class TriggerRefresh extends IntentService {
              data = new ArrayList<>();
 
             copy(feedList, data);
+           String action= intent.getAction();
+            if(action!=null&&action.equals("autosync")){
+                showNotification();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -157,6 +180,81 @@ public class TriggerRefresh extends IntentService {
         }
 
         return data;
+    }
+
+
+    private void showNotification() {
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR);
+        int ampm = cal.get(Calendar.AM_PM);
+        if (hour == 7 || hour == 10 || (hour == 1 && ampm == 1) || (hour
+                == 13 && ampm == 1) || (hour == 4 && ampm == 1) || (hour == 16 && ampm == 1)||
+                (hour == 5 && ampm == 1) || (hour == 17 && ampm == 1)||
+                (hour == 6 && ampm == 1) || (hour == 18 && ampm == 1)
+                ) {
+            Cursor cursor = getContentResolver().query(NewsContract.NewsEntry.CONTENT_URI,
+                    NewsFragment.FeedsQuery.PROJECTIONS, NewsContract.NewsEntry.COLUMN_FEED_CATEGORY + " = ?"
+                    , new String[]{String.valueOf(0)}, null);
+
+            List<LocalFeed> mDataSet=NewsFragment.getLocalFeeds(cursor);
+            Collections.sort(mDataSet, Collections.reverseOrder(new Comparator<LocalFeed>() {
+                @Override
+                public int compare(LocalFeed lhs, LocalFeed rhs) {
+                    return (lhs).getPubDate().compareTo((rhs).getPubDate());
+                }
+            }));
+            LocalFeed feed = mDataSet.get(0);
+
+
+            try {
+                String title = feed.getTitle();
+                String message = Jsoup.parse(feed.getSummary().trim()).text();
+                Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+                Bitmap remote_picture = null;
+                if (feed.getThumbnail() != null) {
+                    remote_picture = BitmapFactory.decodeStream((InputStream) new URL(feed.getThumbnail()).getContent());
+                }
+
+                Intent intent = new Intent(this, Detail.class);
+                intent.putExtra("category", feed.getCategoryId());
+                intent.putExtra("position", 0);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+                        PendingIntent.FLAG_ONE_SHOT);
+
+                URL url = null;
+
+                NotificationCompat.BigPictureStyle bigPicStyle = null;
+                if (remote_picture != null)
+                    bigPicStyle = new NotificationCompat.BigPictureStyle()
+                            .bigPicture(remote_picture);
+
+                Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_stat_ct)
+                        .setLargeIcon(largeIcon)
+                        .setContentTitle(title)
+                        .setContentText(message)
+                        .setAutoCancel(true)
+                        .setSound(defaultSoundUri)
+
+                        .setContentIntent(pendingIntent);
+                if (bigPicStyle != null) {
+                    notificationBuilder.setStyle(bigPicStyle);
+                }
+
+
+                NotificationManager notificationManager =
+                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(0, notificationBuilder.build());
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

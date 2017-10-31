@@ -10,6 +10,9 @@ import com.viginfotech.chennaitimes.Config;
 import com.viginfotech.chennaitimes.data.NewsContract;
 import com.viginfotech.chennaitimes.sync.TriggerRefresh;
 import com.viginfotech.chennaitimes.util.CloudEndpointBuilderHelper;
+import com.viginfotech.chennaitimes.util.NetworkUtil;
+
+
 
 
 /**
@@ -41,7 +44,8 @@ public class SyncSheduleService extends JobService {
     }
 
     private void syncAll() {
-       startService(new Intent(this, TriggerRefresh.class).putExtra("category",0));
+        if(!NetworkUtil.isOnline(this)) return;
+       startService(new Intent(this, TriggerRefresh.class).putExtra("category",0).setAction("autosync"));
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",1));
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",2));
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",3));
@@ -49,7 +53,10 @@ public class SyncSheduleService extends JobService {
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",5));
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",6));
 
+
     }
+
+
 
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
