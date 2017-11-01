@@ -12,4 +12,8 @@
 *.jks
 /app/src/debug/*.json
 /app/*.json
-
+.idea
+.build
+local.properties
+*.iml
+build
