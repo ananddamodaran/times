@@ -2,11 +2,12 @@
 
 buildscript {
     repositories {
+        google()
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
-        classpath 'com.google.gms:google-services:3.0.0'
+        classpath 'com.google.gms:google-services:3.1.0'
 
         classpath ('com.google.firebase:firebase-plugins:1.1.0') {
             exclude group: 'com.google.guava', module: 'guava-jdk5'
@@ -20,10 +21,29 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         jcenter()
     }
 }
+ext {
+    buildTools = '27.0.0'
+    compileSdk = 26
+    minSdk = 15
+    minSdkInstant = 21
+    versionCode = 6
+    versionName = '1.0.2'
 
+    firebaseVersion = '11.4.2'
+    supportLibVersion = "27.0.0"
+    butterknifeVersion = "8.7.0"
+    glideVersion = "4.0.0"
+
+    findbugsVersion = "3.0.1"
+    espressoVersion = "2.2.2"
+    androidTestVersion = "0.5"
+    hamcrestVersion = "1.3"
+    junitVersion = "4.12"
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
