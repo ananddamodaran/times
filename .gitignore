@@ -10,3 +10,6 @@
 .externalNativeBuild
 /app/*.apk
 *.jks
+/app/src/debug/*.json
+/app/*.json
+
