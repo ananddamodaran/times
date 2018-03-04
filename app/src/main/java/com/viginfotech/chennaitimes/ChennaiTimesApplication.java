@@ -16,10 +16,6 @@ public class ChennaiTimesApplication extends Application {
         super.onCreate();
         MobileAds.initialize(this, getString(R.string.banner_ad_unit_id_prod));
         context=this;
-
-
-
-
     }
 
     public static Context getContext(){return context;}
