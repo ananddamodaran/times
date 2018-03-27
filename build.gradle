@@ -35,8 +35,8 @@ ext {
 
     firebaseVersion = '11.8.0'
     supportLibVersion = "27.1.0"
-    butterknifeVersion = "8.7.0"
-    glideVersion = "4.6.1"
+    butterknifeVersion = "8.8.1"
+    glideVersion = "3.7.0"
 
     findbugsVersion = "3.0.1"
     espressoVersion = "2.2.2"

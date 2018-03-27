@@ -26,7 +26,8 @@ import org.jsoup.Jsoup;
 
 import java.io.IOException;
 
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
@@ -35,23 +36,23 @@ import butterknife.ButterKnife;
  */
 public class DetailFragment extends Fragment  {
     private static final String TAG = "DetailFragment";
-    @Bind(R.id.detail)
+    @BindView(R.id.detail)
     TextView detailNews;
 
-    @Bind(R.id.publisherlogo)
+    @BindView(R.id.publisherlogo)
     ImageView publisherLogo;
-    @Bind(R.id.publisher)
+    @BindView(R.id.publisher)
     TextView publisher;
-    @Bind(R.id.time)
+    @BindView(R.id.time)
     TextView time;
-    @Bind(R.id.title)
+    @BindView(R.id.title)
     TextView title;
-    @Bind(R.id.thumbnail)
+    @BindView(R.id.thumbnail)
     ImageView thumbnail;
     private GetDetailTask detailTask;
-    @Bind(R.id.pgbar)
+    @BindView(R.id.pgbar)
     ProgressBar pgbar;
-    @Bind(R.id.divider)View divider;
+    @BindView(R.id.divider)View divider;
     private LocalFeed localFeed;
     private AdView mAdView;
     @Nullable

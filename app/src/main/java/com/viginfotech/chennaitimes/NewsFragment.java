@@ -33,7 +33,7 @@ import com.viginfotech.chennaitimes.util.ChennaiTimesPreferences;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.viginfotech.chennaitimes.util.NetworkUtil.isOnline;
@@ -50,12 +50,12 @@ public class NewsFragment extends Fragment {
     private static final String STATE_POSITION_OFFSET ="selected_feed_position_offset" ;
 
     private int page;
-    @Bind(R.id.listView) RecyclerView recyclerView;
-    @Bind(R.id.progressBar)
+    @BindView(R.id.listView) RecyclerView recyclerView;
+    @BindView(R.id.progressBar)
     ProgressBar progressBar;
     private LinearLayoutManager mLayoutManager;
     private NewsFeedAdapter adapter;
-    @Bind(R.id.swipe_refresh_layout)
+    @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefresh;
     private int selectedFeedToRead;
     private int overalldx;

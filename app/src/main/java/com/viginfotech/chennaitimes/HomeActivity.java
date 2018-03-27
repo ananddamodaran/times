@@ -36,7 +36,7 @@ import com.viginfotech.chennaitimes.util.ZoomOutPageTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.viginfotech.chennaitimes.Constants.CATEGORY_BUSINESS;
@@ -53,12 +53,12 @@ public class HomeActivity extends AppCompatActivity
         NavigationView.OnNavigationItemSelectedListener,
         GoogleApiClient.OnConnectionFailedListener {
 
-    @Bind(R.id.container)
+    @BindView(R.id.container)
    ViewPager mViewPager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    @Bind(R.id.nav_view)
+    @BindView(R.id.nav_view)
     NavigationView navigationView;
-    @Bind(R.id.drawer_layout)
+    @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
     public static final int REQUEST_INVITE = 2000;
     public static final int ITEMS_PER_AD = 8;
