@@ -11,6 +11,7 @@
 /app/*.apk
 *.jks
 /app/src/debug/*.json
+/app/release/
 /app/*.json
 .idea
 .build

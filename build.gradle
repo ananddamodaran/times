@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.2'
         classpath 'com.google.gms:google-services:3.1.0'
 
         classpath ('com.google.firebase:firebase-plugins:1.1.0') {
@@ -26,15 +26,15 @@ allprojects {
     }
 }
 ext {
-    buildTools = '27.0.0'
+    buildTools = '27.0.3'
     compileSdk = 26
     minSdk = 15
     minSdkInstant = 21
-    versionCode = 6
-    versionName = '1.0.2'
+    versionCode = 7
+    versionName = '1.0.2.1'
 
     firebaseVersion = '11.8.0'
-    supportLibVersion = "27.1.0"
+    supportLibVersion = "27.1.1"
     butterknifeVersion = "8.8.1"
     glideVersion = "3.7.0"
 
