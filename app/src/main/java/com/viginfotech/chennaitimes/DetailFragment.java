@@ -81,11 +81,11 @@ public class DetailFragment extends Fragment  {
                     titleText =Jsoup.parse(localFeed.getTitle().trim()).text() ;
                 }
                 publisherLogo.setVisibility(View.VISIBLE);
-                publisherLogo.setImageDrawable(DisplayUtil.getPublisherLogo(getContext(),localFeed.getSourceId()));
+                publisherLogo.setImageDrawable(DisplayUtil.INSTANCE.getPublisherLogo(getContext(),localFeed.getSourceId()));
                 title.setText(titleText);
                 divider.setVisibility(View.VISIBLE);
-                publisher.setText(DisplayUtil.getPublisherName(getContext(),localFeed.getSourceId()));
-                time.setText(TimeUtils.formatShortDate(localFeed.getPubDate()));
+                publisher.setText(DisplayUtil.INSTANCE.getPublisherName(getContext(),localFeed.getSourceId()));
+                time.setText(TimeUtils.INSTANCE.formatShortDate(localFeed.getPubDate()));
                 mAdView.setVisibility(View.VISIBLE);
                 if (localFeed.getImage() != null) {
                     thumbnail.setVisibility(View.VISIBLE);
@@ -184,9 +184,9 @@ public class DetailFragment extends Fragment  {
                     titleText=Jsoup.parse(localFeed.getTitle().trim()).text();
                 }
                 publisherLogo.setVisibility(View.VISIBLE);
-                publisherLogo.setImageDrawable(DisplayUtil.getPublisherLogo(getContext(), localFeed.getSourceId()));
-                publisher.setText(DisplayUtil.getPublisherName(getContext(),localFeed.getSourceId()));
-                time.setText(TimeUtils.formatShortDate(localFeed.getPubDate()));
+                publisherLogo.setImageDrawable(DisplayUtil.INSTANCE.getPublisherLogo(getContext(), localFeed.getSourceId()));
+                publisher.setText(DisplayUtil.INSTANCE.getPublisherName(getContext(),localFeed.getSourceId()));
+                time.setText(TimeUtils.INSTANCE.formatShortDate(localFeed.getPubDate()));
                 divider.setVisibility(View.VISIBLE);
 
                 title.setText(titleText);

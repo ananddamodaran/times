@@ -34,16 +34,16 @@ public class Nakkheeran {
     public Nakkheeran(){}
     private static String getUri(int category){
         switch (category){
-            case CATEGORY_HEADLINES:
-                return Config.Nakkheeran.NAKKHEERAN_HEADLINES;
-            case CATEGORY_TAMILNADU:
-                return Config.Nakkheeran.NAKKHEERAN_TAMILNADU;
-            case CATEGORY_INDIA:
-                return Config.Nakkheeran.NAKKHEERAN_INDIA;
-            case CATEGORY_WORLD:
-                return Config.Nakkheeran.NAKKHEERAN_WORLD;
-            case CATEGORY_SPORTS:
-                return Config.Nakkheeran.NAKKHEERAN_SPORTS;
+            case INSTANCE.getCATEGORY_HEADLINES():
+                return Config.Nakkheeran.Companion.getNAKKHEERAN_HEADLINES();
+            case INSTANCE.getCATEGORY_TAMILNADU():
+                return Config.Nakkheeran.Companion.getNAKKHEERAN_TAMILNADU();
+            case INSTANCE.getCATEGORY_INDIA():
+                return Config.Nakkheeran.Companion.getNAKKHEERAN_INDIA();
+            case INSTANCE.getCATEGORY_WORLD():
+                return Config.Nakkheeran.Companion.getNAKKHEERAN_WORLD();
+            case INSTANCE.getCATEGORY_SPORTS():
+                return Config.Nakkheeran.Companion.getNAKKHEERAN_SPORTS();
             default:
                 return "";
         }
@@ -51,25 +51,25 @@ public class Nakkheeran {
     public static List<Feed> queryNakkheeranNews(int category){
         List<Feed> feedList = null;
         switch (category){
-            case CATEGORY_HEADLINES:
-            case CATEGORY_TAMILNADU:
-            case CATEGORY_INDIA:
-            case CATEGORY_WORLD:
-            case CATEGORY_SPORTS:
+            case INSTANCE.getCATEGORY_HEADLINES():
+            case INSTANCE.getCATEGORY_TAMILNADU():
+            case INSTANCE.getCATEGORY_INDIA():
+            case INSTANCE.getCATEGORY_WORLD():
+            case INSTANCE.getCATEGORY_SPORTS():
 
 
-                    feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_NAKKHEERAN, category);
+                    feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_NAKKHEERAN(), category);
                 if (feedList.size() == 0) {
                     System.out.println("fetching from net nakkeran headlines");
                    feedList= fetchNakkheeran(category,getUri(category));
                     if (feedList != null) {
 
-                        feedList = removeDuplicates(Constants.SOURCE_NAKKHEERAN, Arrays.asList(category), feedList);
+                        feedList = removeDuplicates(Constants.INSTANCE.getSOURCE_NAKKHEERAN(), Arrays.asList(category), feedList);
                         if(feedList.size()>0) {
                             ofy().save().entities(feedList).now();
-                            feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_NAKKHEERAN, category);
+                            feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_NAKKHEERAN(), category);
                         }else{
-                            feedList=QueryUtils.queryLatest7Feeds(SOURCE_NAKKHEERAN,category);
+                            feedList=QueryUtils.queryLatest7Feeds(INSTANCE.getSOURCE_NAKKHEERAN(),category);
                         }
                     }
 

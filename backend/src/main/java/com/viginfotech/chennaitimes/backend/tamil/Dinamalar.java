@@ -38,24 +38,24 @@ public class Dinamalar {
 
 
     public static List<Feed> fetchDinamalarNews(int category){
-        return  DinamalarParser.parseFeed(UriFetch.fetchData(getUri(SOURCE_DINAMALAR, category)), category);
+        return  DinamalarParser.parseFeed(UriFetch.fetchData(getUri(INSTANCE.getSOURCE_DINAMALAR(), category)), category);
     }
     public static List<Feed> queryDinamalarNews(int category) {
 
-        List<Feed> feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAMALAR, category);
+        List<Feed> feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_DINAMALAR(), category);
         if (feedList.size() == 0) {
             System.out.println("Fetching from net " + category+" dinamalar") ;
             feedList = fetchDinamalarNews(category);
             if (feedList != null) {
 
-                feedList = removeDuplicates(SOURCE_DINAMALAR, Arrays.asList(category), feedList);
+                feedList = removeDuplicates(INSTANCE.getSOURCE_DINAMALAR(), Arrays.asList(category), feedList);
                 System.out.println("filtered size dinamalar" + feedList.size());
                 if(feedList.size()>0) {
                     ofy().save().entities(feedList).now();
 
-                    feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAMALAR, category);
+                    feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_DINAMALAR(), category);
                 }else{
-                    feedList=QueryUtils.queryLatest7Feeds(SOURCE_DINAMALAR,category);
+                    feedList=QueryUtils.queryLatest7Feeds(INSTANCE.getSOURCE_DINAMALAR(),category);
                 }
 
             }
@@ -68,9 +68,9 @@ public class Dinamalar {
 
     public static Feed getDetail(String guid, int categroy) {
         switch (categroy) {
-            case CATEGORY_BUSINESS:
+            case INSTANCE.getCATEGORY_BUSINESS():
                 return readBusinessNews(guid);
-            case CATEGORY_CINEMA:
+            case INSTANCE.getCATEGORY_CINEMA():
                 return readCinema(guid);
             default:
                 return getNews(guid);
@@ -243,20 +243,20 @@ public class Dinamalar {
 
     private static String getUri(int source, int category) {
         switch (source) {
-            case SOURCE_DINAMALAR:
+            case INSTANCE.getSOURCE_DINAMALAR():
                 switch (category) {
 
-                    case CATEGORY_HEADLINES:
-                        return Config.Dinamalar.DINAMALAR_HEADLINES_URI;
-                    case CATEGORY_TAMILNADU:
-                        return Config.Dinamalar.DINAMALAR_TAMILNADU_URI;
+                    case INSTANCE.getCATEGORY_HEADLINES():
+                        return Config.Dinamalar.Companion.getDINAMALAR_HEADLINES_URI();
+                    case INSTANCE.getCATEGORY_TAMILNADU():
+                        return Config.Dinamalar.Companion.getDINAMALAR_TAMILNADU_URI();
 
-                    case CATEGORY_WORLD:
-                        return Config.Dinamalar.DINAMALAR_WORLD_URI;
-                    case CATEGORY_BUSINESS:
-                        return Config.Dinamalar.DINAMALAR_BUSINESS_URI;
-                    case CATEGORY_CINEMA:
-                        return Config.Dinamalar.DINAMALAR_CINEMA_URI;
+                    case INSTANCE.getCATEGORY_WORLD():
+                        return Config.Dinamalar.Companion.getDINAMALAR_WORLD_URI();
+                    case INSTANCE.getCATEGORY_BUSINESS():
+                        return Config.Dinamalar.Companion.getDINAMALAR_BUSINESS_URI();
+                    case INSTANCE.getCATEGORY_CINEMA():
+                        return Config.Dinamalar.Companion.getDINAMALAR_CINEMA_URI();
                     default:
                         return null;
 

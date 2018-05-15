@@ -34,16 +34,16 @@ public class Dinakaran {
 
     private static String getUri(int category) {
         switch (category) {
-            case CATEGORY_TAMILNADU:
-                return Config.Dinakaran.DINAKARAN_TAMILNADU_URI;
-            case CATEGORY_INDIA:
-                return Config.Dinakaran.DINAKARAN_INDIA_URI;
-            case CATEGORY_WORLD:
-                return Config.Dinakaran.DINAKARAN_WORLD_URI;
-            case CATEGORY_BUSINESS:
-                return Config.Dinakaran.DINAKARAN_BUSINESS_URI;
-            case CATEGORY_SPORTS:
-                return Config.Dinakaran.DINAKARAN_SPORTS_URI;
+            case INSTANCE.getCATEGORY_TAMILNADU():
+                return Config.Dinakaran.Companion.getDINAKARAN_TAMILNADU_URI();
+            case INSTANCE.getCATEGORY_INDIA():
+                return Config.Dinakaran.Companion.getDINAKARAN_INDIA_URI();
+            case INSTANCE.getCATEGORY_WORLD():
+                return Config.Dinakaran.Companion.getDINAKARAN_WORLD_URI();
+            case INSTANCE.getCATEGORY_BUSINESS():
+                return Config.Dinakaran.Companion.getDINAKARAN_BUSINESS_URI();
+            case INSTANCE.getCATEGORY_SPORTS():
+                return Config.Dinakaran.Companion.getDINAKARAN_SPORTS_URI();
             default:
                 return "";
         }
@@ -52,26 +52,26 @@ public class Dinakaran {
     public static List<Feed> queryDinakaranNews(int category) {
         List<Feed> feedList = null;
         switch (category) {
-            case CATEGORY_TAMILNADU:
-            case CATEGORY_INDIA:
-            case CATEGORY_WORLD:
-            case CATEGORY_BUSINESS:
-            case CATEGORY_SPORTS:
+            case INSTANCE.getCATEGORY_TAMILNADU():
+            case INSTANCE.getCATEGORY_INDIA():
+            case INSTANCE.getCATEGORY_WORLD():
+            case INSTANCE.getCATEGORY_BUSINESS():
+            case INSTANCE.getCATEGORY_SPORTS():
 
-                feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAKARAN, category);
+                feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_DINAKARAN(), category);
                 if (feedList.size() == 0) {
                     System.out.println("Fetching from net " + category);
                     feedList = UriFetch.fetchDinakaranData(category, getUri(category));
 
                     if (feedList != null) {
 
-                        feedList = removeDuplicates(Constants.SOURCE_DINAKARAN, Arrays.asList(category), feedList);
+                        feedList = removeDuplicates(Constants.INSTANCE.getSOURCE_DINAKARAN(), Arrays.asList(category), feedList);
                         System.out.println("filtered size dinakaran" + feedList.size());
                         if (feedList.size() > 0) {
                             ofy().save().entities(feedList).now();
-                            feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAKARAN, category);
+                            feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_DINAKARAN(), category);
                         } else {
-                            feedList = QueryUtils.queryLatest7Feeds(SOURCE_DINAKARAN, category);
+                            feedList = QueryUtils.queryLatest7Feeds(INSTANCE.getSOURCE_DINAKARAN(), category);
 
                         }
 

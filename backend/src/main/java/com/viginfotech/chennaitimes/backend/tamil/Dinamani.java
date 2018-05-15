@@ -35,21 +35,21 @@ public class Dinamani {
     }
     public static List<Feed> fetchDinamaniNews(int category){
         switch (category){
-            case CATEGORY_HEADLINES:
+            case INSTANCE.getCATEGORY_HEADLINES():
        return DinamaniParser.parseFeed(UriFetch.
-                fetchData(Config.Dinamani.FRONT_PAGE_URI), category);
-            case CATEGORY_TAMILNADU:
-              return   DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.TAMIL_NADU_PAGE_URI), CATEGORY_TAMILNADU);
-            case CATEGORY_INDIA:
-                return  DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.INDIA_NEWS_PAGE_URI), CATEGORY_INDIA);
-            case CATEGORY_WORLD:
-                return  DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.INTERNATIONAL_NEWS_PAGE_URI),
-                        CATEGORY_WORLD);
-            case CATEGORY_BUSINESS:
-                return DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.BUSINESS_NEWS_PAGE_URI),
+                fetchData(Config.Dinamani.Companion.getFRONT_PAGE_URI()), category);
+            case INSTANCE.getCATEGORY_TAMILNADU():
+              return   DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.Companion.getTAMIL_NADU_PAGE_URI()), INSTANCE.getCATEGORY_TAMILNADU());
+            case INSTANCE.getCATEGORY_INDIA():
+                return  DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.Companion.getINDIA_NEWS_PAGE_URI()), INSTANCE.getCATEGORY_INDIA());
+            case INSTANCE.getCATEGORY_WORLD():
+                return  DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.Companion.getINTERNATIONAL_NEWS_PAGE_URI()),
+                        INSTANCE.getCATEGORY_WORLD());
+            case INSTANCE.getCATEGORY_BUSINESS():
+                return DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.Companion.getBUSINESS_NEWS_PAGE_URI()),
                         category);
-            case CATEGORY_CINEMA:
-                return DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.CINEMA_NEWS_PAGE_URI),
+            case INSTANCE.getCATEGORY_CINEMA():
+                return DinamaniParser.parseFeed(UriFetch.fetchData(Config.Dinamani.Companion.getCINEMA_NEWS_PAGE_URI()),
                         category);
             default: return null;
 
@@ -59,28 +59,28 @@ public class Dinamani {
     public static List<Feed> queryDinamaniNews(int category) {
         List<Feed> feedList = null;
         switch (category) {
-            case CATEGORY_HEADLINES:
-            case CATEGORY_TAMILNADU:
-            case CATEGORY_INDIA:
-            case CATEGORY_WORLD:
-            case CATEGORY_BUSINESS:
-            case CATEGORY_CINEMA:
+            case INSTANCE.getCATEGORY_HEADLINES():
+            case INSTANCE.getCATEGORY_TAMILNADU():
+            case INSTANCE.getCATEGORY_INDIA():
+            case INSTANCE.getCATEGORY_WORLD():
+            case INSTANCE.getCATEGORY_BUSINESS():
+            case INSTANCE.getCATEGORY_CINEMA():
 
-                feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAMANI, category);
+                feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_DINAMANI(), category);
                 if (feedList.size() == 0) {
                     System.out.println("Fetching from net " + "headlines" + " Dinamani");
                     feedList = fetchDinamaniNews(category);
                     if (feedList != null) {
 
 
-                        feedList = removeDuplicates(Constants.SOURCE_DINAMANI, Arrays.asList( category), feedList);
+                        feedList = removeDuplicates(Constants.INSTANCE.getSOURCE_DINAMANI(), Arrays.asList( category), feedList);
                         System.out.println("filtered size dinamani" + feedList.size());
                         if(feedList.size()>0) {
 
                             ofy().save().entities(feedList).now();
-                            feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_DINAMANI, category);
+                            feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_DINAMANI(), category);
                         }else{
-                            feedList=QueryUtils.queryLatest7Feeds(SOURCE_DINAMANI,category);
+                            feedList=QueryUtils.queryLatest7Feeds(INSTANCE.getSOURCE_DINAMANI(),category);
                         }
 
                     }

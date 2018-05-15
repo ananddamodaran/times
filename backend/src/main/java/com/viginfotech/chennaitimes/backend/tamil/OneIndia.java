@@ -31,14 +31,14 @@ public class OneIndia {
     public OneIndia(){}
     private static String getUri(int category){
         switch (category){
-            case CATEGORY_TAMILNADU:
-                return Config.OneIndia.ONEINDIA_TAMILNADU;
-            case CATEGORY_INDIA:
-                return Config.OneIndia.ONEINDIA_INDIA;
-            case CATEGORY_WORLD:
-                return Config.OneIndia.ONEINDIA_WORLD;
-            case CATEGORY_BUSINESS:
-                return Config.OneIndia.ONEINDIA_BUSINESS;
+            case INSTANCE.getCATEGORY_TAMILNADU():
+                return Config.OneIndia.Companion.getONEINDIA_TAMILNADU();
+            case INSTANCE.getCATEGORY_INDIA():
+                return Config.OneIndia.Companion.getONEINDIA_INDIA();
+            case INSTANCE.getCATEGORY_WORLD():
+                return Config.OneIndia.Companion.getONEINDIA_WORLD();
+            case INSTANCE.getCATEGORY_BUSINESS():
+                return Config.OneIndia.Companion.getONEINDIA_BUSINESS();
             default:
                 return null;
         }
@@ -46,26 +46,26 @@ public class OneIndia {
     public static List<Feed> queryOneIndiaNews(int category){
         List<Feed> feedList=null;
         switch (category){
-            case CATEGORY_TAMILNADU:
-            case CATEGORY_INDIA:
-            case CATEGORY_WORLD:
-            case CATEGORY_BUSINESS:
+            case INSTANCE.getCATEGORY_TAMILNADU():
+            case INSTANCE.getCATEGORY_INDIA():
+            case INSTANCE.getCATEGORY_WORLD():
+            case INSTANCE.getCATEGORY_BUSINESS():
 
-                feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_ONEINDIA, category);
+                feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_ONEINDIA(), category);
                 if (feedList.size() == 0) {
                     System.out.println("Fetching from net " + category);
                     feedList= UriFetch.fetchOneIndiaData(category,getUri(category));
 
                     if (feedList != null) {
 
-                        feedList = removeDuplicates(Constants.SOURCE_ONEINDIA, Arrays.asList(category), feedList);
+                        feedList = removeDuplicates(Constants.INSTANCE.getSOURCE_ONEINDIA(), Arrays.asList(category), feedList);
                         System.out.println("filtered size oneindia" + feedList.size());
 
                         if(feedList.size()>0) {
                             ofy().save().entities(feedList).now();
-                            feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_ONEINDIA, category);
+                            feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_ONEINDIA(), category);
                         }else{
-                            feedList=QueryUtils.queryLatest7Feeds(SOURCE_ONEINDIA,category);
+                            feedList=QueryUtils.queryLatest7Feeds(INSTANCE.getSOURCE_ONEINDIA(),category);
                         }
                     }
 

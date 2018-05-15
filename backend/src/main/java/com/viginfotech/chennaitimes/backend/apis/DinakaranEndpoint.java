@@ -32,9 +32,9 @@ import static com.viginfotech.chennaitimes.backend.Constants.CATEGORY_WORLD;
         name = "chennaiTimesApi",
         version = "v1",
         namespace = @ApiNamespace(
-                ownerDomain = Constants.API_OWNER,
-                ownerName = Constants.API_OWNER,
-                packagePath = Constants.API_PACKAGE_PATH
+                ownerDomain = Constants.INSTANCE.getAPI_OWNER(),
+                ownerName = Constants.INSTANCE.getAPI_OWNER(),
+                packagePath = Constants.INSTANCE.getAPI_PACKAGE_PATH()
         )
 )
 public class DinakaranEndpoint {
@@ -45,16 +45,16 @@ public class DinakaranEndpoint {
 
         switch (categoryId) {
 
-            case CATEGORY_TAMILNADU:
-                return Dinakaran.queryDinakaranNews(CATEGORY_TAMILNADU);
-            case CATEGORY_INDIA:
-                return Dinakaran.queryDinakaranNews(CATEGORY_INDIA);
-            case CATEGORY_WORLD:
-                return Dinakaran.queryDinakaranNews(CATEGORY_WORLD);
-            case CATEGORY_BUSINESS:
-                return Dinakaran.queryDinakaranNews(CATEGORY_BUSINESS);
-            case CATEGORY_SPORTS:
-                return Dinakaran.queryDinakaranNews(CATEGORY_SPORTS);
+            case INSTANCE.getCATEGORY_TAMILNADU():
+                return Dinakaran.queryDinakaranNews(INSTANCE.getCATEGORY_TAMILNADU());
+            case INSTANCE.getCATEGORY_INDIA():
+                return Dinakaran.queryDinakaranNews(INSTANCE.getCATEGORY_INDIA());
+            case INSTANCE.getCATEGORY_WORLD():
+                return Dinakaran.queryDinakaranNews(INSTANCE.getCATEGORY_WORLD());
+            case INSTANCE.getCATEGORY_BUSINESS():
+                return Dinakaran.queryDinakaranNews(INSTANCE.getCATEGORY_BUSINESS());
+            case INSTANCE.getCATEGORY_SPORTS():
+                return Dinakaran.queryDinakaranNews(INSTANCE.getCATEGORY_SPORTS());
 
         }
 

@@ -81,7 +81,7 @@ public class UriFetch {
 
 
                     feed.setCategoryId(categoryId);
-                    feed.setSourceId(Constants.SOURCE_DINAKARAN);
+                    feed.setSourceId(Constants.INSTANCE.getSOURCE_DINAKARAN());
                     feedList.add(feed);
                 }
 
@@ -131,7 +131,7 @@ public class UriFetch {
 
                     feed.setGuid("http://tamil.oneindia.com" + link);
                     feed.setCategoryId(category);
-                    feed.setSourceId(Constants.SOURCE_ONEINDIA);
+                    feed.setSourceId(Constants.INSTANCE.getSOURCE_ONEINDIA());
 
                     long now=System.currentTimeMillis();
 

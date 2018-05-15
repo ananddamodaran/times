@@ -46,7 +46,7 @@ public class DinamalarParser {
                             inDataItemTag = true;
                             newsItem = new Feed();
                             newsItem.setCategoryId(categroy);
-                            newsItem.setSourceId(Constants.SOURCE_DINAMALAR);
+                            newsItem.setSourceId(Constants.INSTANCE.getSOURCE_DINAMALAR());
                             newsList.add(newsItem);
                         }
 
@@ -82,8 +82,8 @@ public class DinamalarParser {
                                     break;
                                 case "pubDate":
 
-                                   Date date= TimeUtils.parseTimeStamp(parser.getText(),Constants.SOURCE_DINAMALAR);
-                                    if(date!=null&&categroy!=Constants.CATEGORY_CINEMA)
+                                   Date date= TimeUtils.parseTimeStamp(parser.getText(), Constants.INSTANCE.getSOURCE_DINAMALAR());
+                                    if(date!=null&&categroy!= Constants.INSTANCE.getCATEGORY_CINEMA())
                                         newsItem.setPubDate(date.getTime());
                                     else newsItem.setPubDate(now);
 

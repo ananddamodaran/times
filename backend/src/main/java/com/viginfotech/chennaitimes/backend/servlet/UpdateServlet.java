@@ -48,49 +48,49 @@ public class UpdateServlet extends HttpServlet {
 
 
         List<Integer> dinakaranCategory = Arrays.asList(
-                Constants.CATEGORY_TAMILNADU,
-                Constants.CATEGORY_INDIA,
-                Constants.CATEGORY_WORLD,
-                Constants.CATEGORY_BUSINESS,
-                Constants.CATEGORY_SPORTS);
+                Constants.INSTANCE.getCATEGORY_TAMILNADU(),
+                Constants.INSTANCE.getCATEGORY_INDIA(),
+                Constants.INSTANCE.getCATEGORY_WORLD(),
+                Constants.INSTANCE.getCATEGORY_BUSINESS(),
+                Constants.INSTANCE.getCATEGORY_SPORTS());
         List<Integer> dinamalarCategory = Arrays.asList(
-                Constants.CATEGORY_HEADLINES,
-                Constants.CATEGORY_TAMILNADU,
-                Constants.CATEGORY_WORLD,
-                Constants.CATEGORY_BUSINESS,
-                Constants.CATEGORY_CINEMA);
+                Constants.INSTANCE.getCATEGORY_HEADLINES(),
+                Constants.INSTANCE.getCATEGORY_TAMILNADU(),
+                Constants.INSTANCE.getCATEGORY_WORLD(),
+                Constants.INSTANCE.getCATEGORY_BUSINESS(),
+                Constants.INSTANCE.getCATEGORY_CINEMA());
         List<Integer> bbcCategory = Arrays.asList(
-                Constants.CATEGORY_INDIA,
-                Constants.CATEGORY_WORLD
+                Constants.INSTANCE.getCATEGORY_INDIA(),
+                Constants.INSTANCE.getCATEGORY_WORLD()
         );
         List<Integer> dinamanaiCategory = Arrays.asList(
-                Constants.CATEGORY_HEADLINES,
-                Constants.CATEGORY_TAMILNADU,
-                Constants.CATEGORY_INDIA,
-                Constants.CATEGORY_WORLD,
-                Constants.CATEGORY_BUSINESS,
-                Constants.CATEGORY_SPORTS,
-                Constants.CATEGORY_CINEMA
+                Constants.INSTANCE.getCATEGORY_HEADLINES(),
+                Constants.INSTANCE.getCATEGORY_TAMILNADU(),
+                Constants.INSTANCE.getCATEGORY_INDIA(),
+                Constants.INSTANCE.getCATEGORY_WORLD(),
+                Constants.INSTANCE.getCATEGORY_BUSINESS(),
+                Constants.INSTANCE.getCATEGORY_SPORTS(),
+                Constants.INSTANCE.getCATEGORY_CINEMA()
         );
 
         List<Integer> oneIndiaCategory = Arrays.asList(
-                Constants.CATEGORY_TAMILNADU,
-                Constants.CATEGORY_INDIA,
-                Constants.CATEGORY_WORLD,
-                Constants.CATEGORY_BUSINESS
+                Constants.INSTANCE.getCATEGORY_TAMILNADU(),
+                Constants.INSTANCE.getCATEGORY_INDIA(),
+                Constants.INSTANCE.getCATEGORY_WORLD(),
+                Constants.INSTANCE.getCATEGORY_BUSINESS()
         );
 
-        List<Integer> nakkheeranCategory = Arrays.asList(Constants.CATEGORY_HEADLINES,
-                Constants.CATEGORY_TAMILNADU,
-                Constants.CATEGORY_INDIA,
-                Constants.CATEGORY_WORLD,
-                Constants.CATEGORY_SPORTS);
-        dinakaranFeeds = removeDuplicates(Constants.SOURCE_DINAKARAN, dinakaranCategory, dinakaranFeeds);
-        dinamalarFeeds = removeDuplicates(Constants.SOURCE_DINAMALAR, dinamalarCategory, dinamalarFeeds);
-        bbcTamilFeeds = removeDuplicates(Constants.SOURCE_BBCTAMIL, bbcCategory, bbcTamilFeeds);
-        dinamaniFeeds = removeDuplicates(Constants.SOURCE_DINAMANI, dinamanaiCategory, dinamaniFeeds);
-        oneIndiaFeeds = removeDuplicates(Constants.SOURCE_ONEINDIA, oneIndiaCategory, oneIndiaFeeds);
-        nakkheeranFeeds = removeDuplicates(Constants.SOURCE_NAKKHEERAN, nakkheeranCategory, nakkheeranFeeds);
+        List<Integer> nakkheeranCategory = Arrays.asList(Constants.INSTANCE.getCATEGORY_HEADLINES(),
+                Constants.INSTANCE.getCATEGORY_TAMILNADU(),
+                Constants.INSTANCE.getCATEGORY_INDIA(),
+                Constants.INSTANCE.getCATEGORY_WORLD(),
+                Constants.INSTANCE.getCATEGORY_SPORTS());
+        dinakaranFeeds = removeDuplicates(Constants.INSTANCE.getSOURCE_DINAKARAN(), dinakaranCategory, dinakaranFeeds);
+        dinamalarFeeds = removeDuplicates(Constants.INSTANCE.getSOURCE_DINAMALAR(), dinamalarCategory, dinamalarFeeds);
+        bbcTamilFeeds = removeDuplicates(Constants.INSTANCE.getSOURCE_BBCTAMIL(), bbcCategory, bbcTamilFeeds);
+        dinamaniFeeds = removeDuplicates(Constants.INSTANCE.getSOURCE_DINAMANI(), dinamanaiCategory, dinamaniFeeds);
+        oneIndiaFeeds = removeDuplicates(Constants.INSTANCE.getSOURCE_ONEINDIA(), oneIndiaCategory, oneIndiaFeeds);
+        nakkheeranFeeds = removeDuplicates(Constants.INSTANCE.getSOURCE_NAKKHEERAN(), nakkheeranCategory, nakkheeranFeeds);
 
         allFeeds.addAll(dinakaranFeeds);
         allFeeds.addAll(dinamaniFeeds);

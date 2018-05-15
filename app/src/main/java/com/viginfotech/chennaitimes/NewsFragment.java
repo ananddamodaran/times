@@ -114,7 +114,7 @@ public class NewsFragment extends Fragment {
             @Override
             public void onReceive(Context context, Intent intent) {
                String action= intent.getAction();
-               if(action.equals(ChennaiTimesPreferences.SYNC_START)){
+               if(action.equals(ChennaiTimesPreferences.INSTANCE.getSYNC_START())){
                    swipeRefresh.setRefreshing(true);
 
                }else {
@@ -185,8 +185,8 @@ public class NewsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ChennaiTimesPreferences.SYNC_START);
-        intentFilter.addAction(ChennaiTimesPreferences.SYNC_COMPLETE);
+        intentFilter.addAction(ChennaiTimesPreferences.INSTANCE.getSYNC_START());
+        intentFilter.addAction(ChennaiTimesPreferences.INSTANCE.getSYNC_COMPLETE());
 
         LocalBroadcastManager.getInstance(getContext()).
                 registerReceiver(mSyncBroadCastReceiver,

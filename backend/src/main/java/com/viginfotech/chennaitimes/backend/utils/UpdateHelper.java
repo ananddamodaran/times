@@ -33,11 +33,11 @@ import static com.viginfotech.chennaitimes.backend.service.OfyService.ofy;
 public class UpdateHelper {
     public static List<Feed> updateNakkheeran() {
         System.out.println("nakkheeran");
-        List<Feed> headLinesFeed = Nakkheeran.fetchNakkheeran(CATEGORY_HEADLINES, Config.Nakkheeran.NAKKHEERAN_HEADLINES);
-        List<Feed> tamilNaduFeed = Nakkheeran.fetchNakkheeran(CATEGORY_TAMILNADU, Config.Nakkheeran.NAKKHEERAN_TAMILNADU);
-        List<Feed> indiaFeed = Nakkheeran.fetchNakkheeran(CATEGORY_INDIA, Config.Nakkheeran.NAKKHEERAN_INDIA);
-        List<Feed> worldFeed = Nakkheeran.fetchNakkheeran(CATEGORY_WORLD, Config.Nakkheeran.NAKKHEERAN_WORLD);
-        List<Feed> sportFeed = Nakkheeran.fetchNakkheeran(CATEGORY_SPORTS, Config.Nakkheeran.NAKKHEERAN_SPORTS);
+        List<Feed> headLinesFeed = Nakkheeran.fetchNakkheeran(INSTANCE.getCATEGORY_HEADLINES(), Config.Nakkheeran.Companion.getNAKKHEERAN_HEADLINES());
+        List<Feed> tamilNaduFeed = Nakkheeran.fetchNakkheeran(INSTANCE.getCATEGORY_TAMILNADU(), Config.Nakkheeran.Companion.getNAKKHEERAN_TAMILNADU());
+        List<Feed> indiaFeed = Nakkheeran.fetchNakkheeran(INSTANCE.getCATEGORY_INDIA(), Config.Nakkheeran.Companion.getNAKKHEERAN_INDIA());
+        List<Feed> worldFeed = Nakkheeran.fetchNakkheeran(INSTANCE.getCATEGORY_WORLD(), Config.Nakkheeran.Companion.getNAKKHEERAN_WORLD());
+        List<Feed> sportFeed = Nakkheeran.fetchNakkheeran(INSTANCE.getCATEGORY_SPORTS(), Config.Nakkheeran.Companion.getNAKKHEERAN_SPORTS());
 
         List<Feed> allFeeds = new ArrayList<Feed>();
         if (headLinesFeed != null) {
@@ -68,10 +68,10 @@ public class UpdateHelper {
 
     public static List<Feed> updateOneIndia() {
         System.out.println("OneIndia");
-        List<Feed> feedListtamil = UriFetch.fetchOneIndiaData(CATEGORY_TAMILNADU, Config.OneIndia.ONEINDIA_TAMILNADU);
-        List<Feed> feedListIndia = UriFetch.fetchOneIndiaData(CATEGORY_INDIA, Config.OneIndia.ONEINDIA_INDIA);
-        List<Feed> feedListWorld = UriFetch.fetchOneIndiaData(CATEGORY_WORLD, Config.OneIndia.ONEINDIA_WORLD);
-        List<Feed> feedListBusiness = UriFetch.fetchOneIndiaData(CATEGORY_BUSINESS, Config.OneIndia.ONEINDIA_BUSINESS);
+        List<Feed> feedListtamil = UriFetch.fetchOneIndiaData(INSTANCE.getCATEGORY_TAMILNADU(), Config.OneIndia.Companion.getONEINDIA_TAMILNADU());
+        List<Feed> feedListIndia = UriFetch.fetchOneIndiaData(INSTANCE.getCATEGORY_INDIA(), Config.OneIndia.Companion.getONEINDIA_INDIA());
+        List<Feed> feedListWorld = UriFetch.fetchOneIndiaData(INSTANCE.getCATEGORY_WORLD(), Config.OneIndia.Companion.getONEINDIA_WORLD());
+        List<Feed> feedListBusiness = UriFetch.fetchOneIndiaData(INSTANCE.getCATEGORY_BUSINESS(), Config.OneIndia.Companion.getONEINDIA_BUSINESS());
 
         List<Feed> allFeeds = new ArrayList<Feed>();
         if (feedListtamil != null) {
@@ -106,11 +106,11 @@ public class UpdateHelper {
 
     public static List<Feed> updateDinakaran() {
         System.out.println("dinakaran");
-        List<Feed> feedListtamil = UriFetch.fetchDinakaranData(CATEGORY_TAMILNADU, Config.Dinakaran.DINAKARAN_TAMILNADU_URI);
-        List<Feed> feedListIndia = UriFetch.fetchDinakaranData(CATEGORY_INDIA, Config.Dinakaran.DINAKARAN_INDIA_URI);
-        List<Feed> feedListWorld = UriFetch.fetchDinakaranData(CATEGORY_WORLD, Config.Dinakaran.DINAKARAN_WORLD_URI);
-        List<Feed> feedListBusiness = UriFetch.fetchDinakaranData(CATEGORY_BUSINESS, Config.Dinakaran.DINAKARAN_BUSINESS_URI);
-        List<Feed> feedListSports = UriFetch.fetchDinakaranData(CATEGORY_SPORTS, Config.Dinakaran.DINAKARAN_SPORTS_URI);
+        List<Feed> feedListtamil = UriFetch.fetchDinakaranData(INSTANCE.getCATEGORY_TAMILNADU(), Config.Dinakaran.Companion.getDINAKARAN_TAMILNADU_URI());
+        List<Feed> feedListIndia = UriFetch.fetchDinakaranData(INSTANCE.getCATEGORY_INDIA(), Config.Dinakaran.Companion.getDINAKARAN_INDIA_URI());
+        List<Feed> feedListWorld = UriFetch.fetchDinakaranData(INSTANCE.getCATEGORY_WORLD(), Config.Dinakaran.Companion.getDINAKARAN_WORLD_URI());
+        List<Feed> feedListBusiness = UriFetch.fetchDinakaranData(INSTANCE.getCATEGORY_BUSINESS(), Config.Dinakaran.Companion.getDINAKARAN_BUSINESS_URI());
+        List<Feed> feedListSports = UriFetch.fetchDinakaranData(INSTANCE.getCATEGORY_SPORTS(), Config.Dinakaran.Companion.getDINAKARAN_SPORTS_URI());
 
         List<Feed> allFeeds = new ArrayList<Feed>();
         if (feedListtamil != null) {
@@ -148,8 +148,8 @@ public class UpdateHelper {
 
     public static List<Feed> updateBBCTamil() {
         System.out.println("bbctamil");
-        List<Feed> indiaFeed = BBCTamil.fetchBBCNews(CATEGORY_INDIA);
-        List<Feed> worldFeed = BBCTamil.fetchBBCNews(CATEGORY_WORLD);
+        List<Feed> indiaFeed = BBCTamil.fetchBBCNews(INSTANCE.getCATEGORY_INDIA());
+        List<Feed> worldFeed = BBCTamil.fetchBBCNews(INSTANCE.getCATEGORY_WORLD());
 
         List<Feed> allFeeds = new ArrayList<Feed>();
 
@@ -175,7 +175,7 @@ public class UpdateHelper {
         Feed feed = new Feed();
         feed.setTitle("NewFeed" + Math.random());
         feed.setSummary("summary" + Math.random());
-        feed.setSourceId(SOURCE_DINAMANI);
+        feed.setSourceId(INSTANCE.getSOURCE_DINAMANI());
         feed.setCategoryId(0);
         feed.setGuid("http://www.google.com" + Math.random());
         feed.setPubDate(System.currentTimeMillis());
@@ -185,12 +185,12 @@ public class UpdateHelper {
 
     public static List<Feed> updateDinamani() {
         System.out.println("dinamani");
-        List<Feed> headLinesFeed = Dinamani.fetchDinamaniNews(CATEGORY_HEADLINES);
-        List<Feed> tamilNaduFeed = Dinamani.fetchDinamaniNews(CATEGORY_TAMILNADU);
-        List<Feed> indiaFeed = Dinamani.fetchDinamaniNews(CATEGORY_INDIA);
-        List<Feed> worldFeed = Dinamani.fetchDinamaniNews(CATEGORY_WORLD);
-        List<Feed> businessFeed = Dinamani.fetchDinamaniNews(CATEGORY_BUSINESS);
-        List<Feed> cinemaFeed = Dinamani.fetchDinamaniNews(CATEGORY_CINEMA);
+        List<Feed> headLinesFeed = Dinamani.fetchDinamaniNews(INSTANCE.getCATEGORY_HEADLINES());
+        List<Feed> tamilNaduFeed = Dinamani.fetchDinamaniNews(INSTANCE.getCATEGORY_TAMILNADU());
+        List<Feed> indiaFeed = Dinamani.fetchDinamaniNews(INSTANCE.getCATEGORY_INDIA());
+        List<Feed> worldFeed = Dinamani.fetchDinamaniNews(INSTANCE.getCATEGORY_WORLD());
+        List<Feed> businessFeed = Dinamani.fetchDinamaniNews(INSTANCE.getCATEGORY_BUSINESS());
+        List<Feed> cinemaFeed = Dinamani.fetchDinamaniNews(INSTANCE.getCATEGORY_CINEMA());
 
         List<Feed> allFeeds = new ArrayList<Feed>();
         if (headLinesFeed != null) {
@@ -231,11 +231,11 @@ public class UpdateHelper {
 
     public static List<Feed> updateDinamalar() {
         System.out.println("dinamalar");
-        List<Feed> headLinesFeed = Dinamalar.fetchDinamalarNews(CATEGORY_HEADLINES);
-        List<Feed> tamilNaduFeed = Dinamalar.fetchDinamalarNews(CATEGORY_TAMILNADU);
-        List<Feed> worldFeed = Dinamalar.fetchDinamalarNews(CATEGORY_WORLD);
-        List<Feed> businessFeed = Dinamalar.fetchDinamalarNews(CATEGORY_BUSINESS);
-        List<Feed> cinemaFeed = Dinamalar.fetchDinamalarNews(CATEGORY_CINEMA);
+        List<Feed> headLinesFeed = Dinamalar.fetchDinamalarNews(INSTANCE.getCATEGORY_HEADLINES());
+        List<Feed> tamilNaduFeed = Dinamalar.fetchDinamalarNews(INSTANCE.getCATEGORY_TAMILNADU());
+        List<Feed> worldFeed = Dinamalar.fetchDinamalarNews(INSTANCE.getCATEGORY_WORLD());
+        List<Feed> businessFeed = Dinamalar.fetchDinamalarNews(INSTANCE.getCATEGORY_BUSINESS());
+        List<Feed> cinemaFeed = Dinamalar.fetchDinamalarNews(INSTANCE.getCATEGORY_CINEMA());
 
         List<Feed> allFeeds = new ArrayList<Feed>();
         if (headLinesFeed != null) {

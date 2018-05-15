@@ -39,9 +39,9 @@ import static com.viginfotech.chennaitimes.backend.service.OfyService.ofy;
   name = "chennaiTimesApi",
   version = "v1",
   namespace = @ApiNamespace(
-          ownerDomain = Constants.API_OWNER,
-          ownerName = Constants.API_OWNER,
-          packagePath = Constants.API_PACKAGE_PATH
+          ownerDomain = Constants.INSTANCE.getAPI_OWNER(),
+          ownerName = Constants.INSTANCE.getAPI_OWNER(),
+          packagePath = Constants.INSTANCE.getAPI_PACKAGE_PATH()
   )
 )
 public class MessagingEndpoint {

@@ -185,7 +185,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
             }
             titleText.setText(title.trim());
 
-            timeText.setText(TimeUtils.formatShortDate(pubDate));
+            timeText.setText(TimeUtils.INSTANCE.formatShortDate(pubDate));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

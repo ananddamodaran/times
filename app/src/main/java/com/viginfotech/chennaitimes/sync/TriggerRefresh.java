@@ -69,14 +69,14 @@ public class TriggerRefresh extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        if(!NetworkUtil.isOnline(this)) return;
+        if(!NetworkUtil.INSTANCE.isOnline(this)) return;
         Bundle bundle = intent.getExtras();
         int category = -1;
         if (bundle != null)
             category = bundle.getInt("category",-1);
         //Log.i(TAG, "onHandleIntent: "+category);
         List<Feed> feedList = new ArrayList<>();
-        Intent syncStart = new Intent(ChennaiTimesPreferences.SYNC_START);
+        Intent syncStart = new Intent(ChennaiTimesPreferences.INSTANCE.getSYNC_START());
         LocalBroadcastManager.getInstance(this).sendBroadcast(syncStart);
         try {
         switch (category){
@@ -114,7 +114,7 @@ public class TriggerRefresh extends IntentService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Intent syncComplete = new Intent(ChennaiTimesPreferences.SYNC_COMPLETE);
+        Intent syncComplete = new Intent(ChennaiTimesPreferences.INSTANCE.getSYNC_COMPLETE());
         LocalBroadcastManager.getInstance(this).sendBroadcast(syncComplete);
 
     }

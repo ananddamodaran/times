@@ -45,7 +45,7 @@ public class BBCTamilParser {
                             inDataItemTag = true;
                             newsItem = new Feed();
                             newsItem.setCategoryId(categroy);
-                            newsItem.setSourceId(Constants.SOURCE_BBCTAMIL);
+                            newsItem.setSourceId(Constants.INSTANCE.getSOURCE_BBCTAMIL());
                             newsList.add(newsItem);
                         }
 
@@ -87,7 +87,7 @@ public class BBCTamilParser {
                                     break;
                                 case "published":
                                     long now = System.currentTimeMillis();
-                                    Date date= TimeUtils.parseTimeStamp(parser.getText(), Constants.SOURCE_BBCTAMIL);
+                                    Date date= TimeUtils.parseTimeStamp(parser.getText(), Constants.INSTANCE.getSOURCE_BBCTAMIL());
                                     if(date!=null)
                                         newsItem.setPubDate(date.getTime());
                                     else newsItem.setPubDate(now);

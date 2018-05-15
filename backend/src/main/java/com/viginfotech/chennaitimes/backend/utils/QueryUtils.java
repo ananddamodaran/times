@@ -22,7 +22,7 @@ public class QueryUtils {
         Query<Feed> q = ofy().load().type(Feed.class);
         q = q.filter("categoryId", category);
         q = q.filter("sourceId", sourceId);
-        if(category!= Constants.CATEGORY_CINEMA) {
+        if(category!= Constants.INSTANCE.getCATEGORY_CINEMA()) {
             q = q.filter("pubDate > ", getLast6HoursInMills());
             q = q.limit(15);
         }else {

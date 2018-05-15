@@ -1,4 +1,5 @@
 apply from: 'config.gradle'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.firebase.firebase-perf'
 
@@ -69,8 +70,12 @@ dependencies {
 
     testImplementation "junit:junit:${junitVersion}"
     implementation project(path: ':backend', configuration: 'android-endpoints')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
 }
 apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}
 

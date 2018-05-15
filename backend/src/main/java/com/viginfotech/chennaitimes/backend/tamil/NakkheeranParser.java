@@ -44,7 +44,7 @@ public class NakkheeranParser {
                             inDataItemTag = true;
                             newsItem = new Feed();
                             newsItem.setCategoryId(category);
-                            newsItem.setSourceId(Constants.SOURCE_NAKKHEERAN);
+                            newsItem.setSourceId(Constants.INSTANCE.getSOURCE_NAKKHEERAN());
                             newsList.add(newsItem);
                         }
 
@@ -70,7 +70,7 @@ public class NakkheeranParser {
                                 case "pubDate":
                                     long now = System.currentTimeMillis();
                                     String parserTime=parser.getText();
-                                    Date date= TimeUtils.parseTimeStamp(parserTime,Constants.SOURCE_NAKKHEERAN);
+                                    Date date= TimeUtils.parseTimeStamp(parserTime, Constants.INSTANCE.getSOURCE_NAKKHEERAN());
                                     if(date!=null)
                                         newsItem.setPubDate(date.getTime());
                                     else newsItem.setPubDate(now);

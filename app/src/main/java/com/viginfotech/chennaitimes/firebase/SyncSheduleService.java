@@ -44,7 +44,7 @@ public class SyncSheduleService extends JobService {
     }
 
     private void syncAll() {
-        if(!NetworkUtil.isOnline(this)) return;
+        if(!NetworkUtil.INSTANCE.isOnline(this)) return;
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",0).setAction("autosync"));
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",1));
        startService(new Intent(this, TriggerRefresh.class).putExtra("category",2));

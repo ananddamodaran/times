@@ -45,7 +45,7 @@ public class DinamaniParser {
                             inDataItemTag = true;
                             newsItem = new Feed();
                             newsItem.setCategoryId(categroy);
-                            newsItem.setSourceId(Constants.SOURCE_DINAMANI);
+                            newsItem.setSourceId(Constants.INSTANCE.getSOURCE_DINAMANI());
                             newsList.add(newsItem);
                         }
 
@@ -73,7 +73,7 @@ public class DinamaniParser {
                                 case "pubDate":
 
                                     long now = System.currentTimeMillis();
-                                    Date date= TimeUtils.parseTimeStamp(parser.getText(), Constants.SOURCE_DINAMANI);
+                                    Date date= TimeUtils.parseTimeStamp(parser.getText(), Constants.INSTANCE.getSOURCE_DINAMANI());
                                     if(date!=null)
                                         newsItem.setPubDate(date.getTime());
                                     else newsItem.setPubDate(now);

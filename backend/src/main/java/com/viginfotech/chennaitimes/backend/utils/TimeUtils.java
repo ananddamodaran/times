@@ -35,7 +35,7 @@ public class TimeUtils {
             try {
 
                 Date data = format.parse(timestamp);
-                if(i==0&&source== Constants.SOURCE_NAKKHEERAN) {
+                if(i==0&&source== Constants.INSTANCE.getSOURCE_NAKKHEERAN()) {
                     return new Date(data.getTime() - ((5 * ONE_HOUR_IN_MILLIS) + (30 * ONE_MINUTE_IN_MILLIS)));
                 }
                 i++;

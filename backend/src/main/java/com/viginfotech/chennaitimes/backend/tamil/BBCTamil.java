@@ -33,14 +33,14 @@ public class BBCTamil {
     }
     private static String getUri(int category){
         switch (category){
-            case CATEGORY_HEADLINES:
-                return Config.BBCTamil.BBCTAMIL_HEADLINES;
-            case CATEGORY_INDIA:
-                return Config.BBCTamil.BBCTAMIL_INDIA;
-            case CATEGORY_WORLD:
-                return Config.BBCTamil.BBCTAMIL_WORLD;
-            case CATEGORY_SPORTS:
-                return Config.BBCTamil.BBCTAMIL_SPORTS;
+            case INSTANCE.getCATEGORY_HEADLINES():
+                return Config.BBCTamil.Companion.getBBCTAMIL_HEADLINES();
+            case INSTANCE.getCATEGORY_INDIA():
+                return Config.BBCTamil.Companion.getBBCTAMIL_INDIA();
+            case INSTANCE.getCATEGORY_WORLD():
+                return Config.BBCTamil.Companion.getBBCTAMIL_WORLD();
+            case INSTANCE.getCATEGORY_SPORTS():
+                return Config.BBCTamil.Companion.getBBCTAMIL_SPORTS();
             default:
                 return "";
         }
@@ -49,24 +49,24 @@ public class BBCTamil {
     public static List<Feed> queryBBCNews(int category) {
         List<Feed> feedList = null;
         switch (category) {
-            case CATEGORY_HEADLINES:
-            case CATEGORY_INDIA:
-            case CATEGORY_WORLD:
-            case CATEGORY_SPORTS:
+            case INSTANCE.getCATEGORY_HEADLINES():
+            case INSTANCE.getCATEGORY_INDIA():
+            case INSTANCE.getCATEGORY_WORLD():
+            case INSTANCE.getCATEGORY_SPORTS():
 
-                feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_BBCTAMIL, category);
+                feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_BBCTAMIL(), category);
                 if (feedList.size() == 0) {
                     System.out.println("Fetching from net " + category+" BBC");
                     feedList = BBCTamilParser.parseFeed(UriFetch.
                             fetchData(getUri(category)), category);
                     if (feedList != null) {
-                        feedList = removeDuplicates(Constants.SOURCE_BBCTAMIL, Arrays.asList(category), feedList);
+                        feedList = removeDuplicates(Constants.INSTANCE.getSOURCE_BBCTAMIL(), Arrays.asList(category), feedList);
                         System.out.println("filtered size oneindia" + feedList.size());
                         if(feedList.size()>0) {
                             ofy().save().entities(feedList).now();
-                            feedList = QueryUtils.queryCategorySortbyPubDate(SOURCE_BBCTAMIL, category);
+                            feedList = QueryUtils.queryCategorySortbyPubDate(INSTANCE.getSOURCE_BBCTAMIL(), category);
                         }else{
-                            feedList=QueryUtils.queryLatest7Feeds(SOURCE_BBCTAMIL,category);
+                            feedList=QueryUtils.queryLatest7Feeds(INSTANCE.getSOURCE_BBCTAMIL(),category);
                         }
 
                     }
@@ -83,25 +83,25 @@ public class BBCTamil {
     public static List<Feed> fetchBBCNews(int category) {
         List<Feed> feedList = null;
         switch (category) {
-            case CATEGORY_HEADLINES:
-                    System.out.println("Fetching from net " + CATEGORY_HEADLINES);
+            case INSTANCE.getCATEGORY_HEADLINES():
+                    System.out.println("Fetching from net " + INSTANCE.getCATEGORY_HEADLINES());
                     feedList = BBCTamilParser.parseFeed(UriFetch.
-                            fetchData(Config.BBCTamil.BBCTAMIL_HEADLINES), CATEGORY_HEADLINES);
+                            fetchData(Config.BBCTamil.Companion.getBBCTAMIL_HEADLINES()), INSTANCE.getCATEGORY_HEADLINES());
                 return feedList;
 
-            case CATEGORY_INDIA:
-                    System.out.println("Fetching from net " + CATEGORY_INDIA);
-                    feedList = BBCTamilParser.parseFeed(UriFetch.fetchData(Config.BBCTamil.BBCTAMIL_INDIA), category);
+            case INSTANCE.getCATEGORY_INDIA():
+                    System.out.println("Fetching from net " + INSTANCE.getCATEGORY_INDIA());
+                    feedList = BBCTamilParser.parseFeed(UriFetch.fetchData(Config.BBCTamil.Companion.getBBCTAMIL_INDIA()), category);
                 return feedList;
 
-            case CATEGORY_WORLD:
-                    System.out.println("Fetching from net " + CATEGORY_WORLD);
-                    feedList = BBCTamilParser.parseFeed(UriFetch.fetchData(Config.BBCTamil.BBCTAMIL_WORLD), category);
+            case INSTANCE.getCATEGORY_WORLD():
+                    System.out.println("Fetching from net " + INSTANCE.getCATEGORY_WORLD());
+                    feedList = BBCTamilParser.parseFeed(UriFetch.fetchData(Config.BBCTamil.Companion.getBBCTAMIL_WORLD()), category);
                 return feedList;
 
-            case CATEGORY_SPORTS:
-                    System.out.println("Fetching from net " + CATEGORY_SPORTS);
-                    feedList = BBCTamilParser.parseFeed(UriFetch.fetchData(Config.BBCTamil.BBCTAMIL_SPORTS),
+            case INSTANCE.getCATEGORY_SPORTS():
+                    System.out.println("Fetching from net " + INSTANCE.getCATEGORY_SPORTS());
+                    feedList = BBCTamilParser.parseFeed(UriFetch.fetchData(Config.BBCTamil.Companion.getBBCTAMIL_SPORTS()),
                             category);
                 return feedList;
 

@@ -131,7 +131,7 @@ public class HomeActivity extends AppCompatActivity
             Bundle args = new Bundle();
             args.putInt("section_number", i);
             fragment.setArguments(args);
-            mSectionsPagerAdapter.addFragment(fragment, DisplayUtil.getAppTitle(this, i));
+            mSectionsPagerAdapter.addFragment(fragment, DisplayUtil.INSTANCE.getAppTitle(this, i));
 
         }
         viewPager.setAdapter(mSectionsPagerAdapter);
@@ -225,7 +225,7 @@ public class HomeActivity extends AppCompatActivity
     public void onPageSelected(int position) {
         setTitle(mSectionsPagerAdapter.getPageTitle(position));
         if (position > 0)
-            PrefUtils.setLastSeenCategory(this, position);
+            PrefUtils.INSTANCE.setLastSeenCategory(this, position);
 
         switch (position) {
             case CATEGORY_HEADLINES:
