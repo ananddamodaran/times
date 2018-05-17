@@ -13,13 +13,14 @@ import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.google.api.server.spi.config.Named;
 import com.viginfotech.chennaitimes.backend.Constants;
 import com.viginfotech.chennaitimes.backend.model.RegistrationRecord;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
+
+import javax.inject.Named;
 
 import static com.viginfotech.chennaitimes.backend.service.OfyService.ofy;
 
