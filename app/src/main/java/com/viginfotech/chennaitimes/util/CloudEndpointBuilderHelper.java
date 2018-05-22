@@ -24,7 +24,7 @@ public final class CloudEndpointBuilderHelper {
      *
      * @return chennaiTimes endpoints to the GAE backend.
      */
-    public static ChennaiTimesApi getEndpoints() {
+    /*public static ChennaiTimesApi getEndpoints() {
 
         // Create API handler
 
@@ -46,7 +46,7 @@ public final class CloudEndpointBuilderHelper {
                 );
 
         return builder.build();
-    }
+    }*/
 
     /**
      * Returns appropriate HttpRequestInitializer depending whether the
@@ -54,11 +54,13 @@ public final class CloudEndpointBuilderHelper {
      *
      * @return an appropriate HttpRequestInitializer.
      */
-    static HttpRequestInitializer getRequestInitializer() {
+    /*static HttpRequestInitializer getRequestInitializer() {
         return new HttpRequestInitializer() {
             @Override
             public void initialize(final HttpRequest arg0) {
             }
         };
-    }
+    }*/
+
+
 }
