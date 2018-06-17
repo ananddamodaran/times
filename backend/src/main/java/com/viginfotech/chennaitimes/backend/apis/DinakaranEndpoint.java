@@ -7,16 +7,16 @@
 package com.viginfotech.chennaitimes.backend.apis;
 
 
-
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.google.api.server.spi.config.Named;
 import com.viginfotech.chennaitimes.backend.Constants;
 import com.viginfotech.chennaitimes.backend.model.Feed;
 import com.viginfotech.chennaitimes.backend.tamil.Dinakaran;
 
 import java.util.List;
+
+import javax.inject.Named;
 
 import static com.viginfotech.chennaitimes.backend.Constants.CATEGORY_BUSINESS;
 import static com.viginfotech.chennaitimes.backend.Constants.CATEGORY_INDIA;

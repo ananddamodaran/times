@@ -8,6 +8,7 @@
 /backend/build/*
 /captures
 .externalNativeBuild
+<<<<<<< HEAD
 /app/*.apk
 *.jks
 /app/src/debug/*.json
@@ -18,3 +19,7 @@
 local.properties
 *.iml
 build
+=======
+*.jks
+.idea/
+>>>>>>> backend_migration

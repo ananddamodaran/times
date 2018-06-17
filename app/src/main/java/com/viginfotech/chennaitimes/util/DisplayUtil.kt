@@ -6,7 +6,13 @@ import android.graphics.drawable.Drawable
 import android.media.RingtoneManager
 import android.support.v4.app.NotificationCompat
 import com.viginfotech.chennaitimes.Constants
-import com.viginfotech.chennaitimes.Constants.*
+import com.viginfotech.chennaitimes.Constants.CATEGORY_BUSINESS
+import com.viginfotech.chennaitimes.Constants.CATEGORY_CINEMA
+import com.viginfotech.chennaitimes.Constants.CATEGORY_HEADLINES
+import com.viginfotech.chennaitimes.Constants.CATEGORY_INDIA
+import com.viginfotech.chennaitimes.Constants.CATEGORY_SPORTS
+import com.viginfotech.chennaitimes.Constants.CATEGORY_TAMILNADU
+import com.viginfotech.chennaitimes.Constants.CATEGORY_WORLD
 import com.viginfotech.chennaitimes.R
 
 

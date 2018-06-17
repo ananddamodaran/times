@@ -4,7 +4,6 @@ package com.viginfotech.chennaitimes.backend.apis;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.google.api.server.spi.config.Named;
 import com.googlecode.objectify.Key;
 import com.viginfotech.chennaitimes.backend.Constants;
 import com.viginfotech.chennaitimes.backend.model.Feed;
@@ -17,6 +16,8 @@ import com.viginfotech.chennaitimes.backend.tamil.OneIndia;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Named;
 
 import static com.viginfotech.chennaitimes.backend.Constants.SOURCE_BBCTAMIL;
 import static com.viginfotech.chennaitimes.backend.Constants.SOURCE_DINAKARAN;

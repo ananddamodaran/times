@@ -2,80 +2,92 @@ apply from: 'config.gradle'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'kotlin-android-extensions'
+
 
 
 android {
     signingConfigs {
-        config {
+        release {
             keyAlias 'keystore'
             keyPassword 'android'
             storeFile file('/Users/anand/Documents/viginfotech/ChennaiTimes/chennaitimes.jks')
             storePassword 'android'
         }
     }
-    compileSdkVersion rootProject.compileSdk
-    buildToolsVersion rootProject.buildTools
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.viginfotech.chennaitimes"
-        minSdkVersion rootProject.minSdk
-        targetSdkVersion rootProject.compileSdk
-        versionCode rootProject.versionCode
-        versionName rootProject.versionName
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 6
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix ".debug"
+            debuggable true
         }
     }
+
 }
 
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:${espressoVersion}", {
-        exclude group: 'com.android.support'
-        exclude module: 'support-annotations'
-        exclude module: 'espresso-idling-resource'
-    })
-    implementation project(path: ':backend', configuration: 'android-endpoints')
+
     implementation('com.google.api-client:google-api-client-android:1.22.0') {
-        exclude group: 'org.apache.httpcomponents'
+        exclude(group: 'xpp3', module: 'xpp3')
+        exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
+        exclude(group: 'junit', module: 'junit')
+        exclude(group: 'com.google.android', module: 'android')
+
     }
-    implementation "com.android.support:appcompat-v7:${rootProject.supportLibVersion}"
-    implementation "com.android.support:appcompat-v7:${rootProject.supportLibVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation "com.android.support:cardview-v7:${rootProject.supportLibVersion}"
-    implementation "com.android.support:recyclerview-v7:${rootProject.supportLibVersion}"
-    implementation "com.github.bumptech.glide:glide:${rootProject.glideVersion}"
-    implementation "com.android.support:support-v4:${rootProject.supportLibVersion}"
-    implementation "com.jakewharton:butterknife:${rootProject.butterknifeVersion}"
-    annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.butterknifeVersion}"
-    implementation "com.android.support:design:${rootProject.supportLibVersion}"
+    implementation(group: 'com.google.api-client', name: 'google-api-client-android', version: '1.21.0')
+            {
+                // Exclude play services, since we're not using this yet.
+                exclude(group: 'com.google.android.gms:play-services', module: 'google-play-services')
+            }
+
+    implementation(group: 'com.google.http-client', name: 'google-http-client-android',
+            version: '1.21.0') {
+        exclude(group: 'com.google.android', module: 'android')
+    }
+
+
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+
+    implementation 'com.android.support:design:27.1.1'
     //firebase
-    implementation "com.google.firebase:firebase-core:${rootProject.firebaseVersion}"
-    implementation "com.google.firebase:firebase-crash:${rootProject.firebaseVersion}"
-    implementation "com.google.firebase:firebase-messaging:${rootProject.firebaseVersion}"
-    implementation "com.google.firebase:firebase-invites:${rootProject.firebaseVersion}"
-    implementation "com.google.firebase:firebase-ads:${rootProject.firebaseVersion}"
-    implementation "com.google.firebase:firebase-perf:${rootProject.firebaseVersion}"
+    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-crash:16.0.0'
+    implementation 'com.google.firebase:firebase-messaging:17.0.0'
+    implementation 'com.google.firebase:firebase-invites:16.0.0'
+    implementation 'com.google.firebase:firebase-ads:15.0.1'
+    implementation 'com.google.firebase:firebase-perf:16.0.0'
 
-    implementation "com.google.code.findbugs:jsr305:${rootProject.findbugsVersion}"
-    implementation 'com.firebase:firebase-jobdispatcher:0.6.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
 
 
-    testImplementation "junit:junit:${junitVersion}"
-    implementation project(path: ':backend', configuration: 'android-endpoints')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation libraries.retrofit
+    implementation libraries.retrofitGson
 
+    implementation libraries.kotlinStdlib
 
 }
 apply plugin: 'com.google.gms.google-services'
-repositories {
-    mavenCentral()
-}
+
 
