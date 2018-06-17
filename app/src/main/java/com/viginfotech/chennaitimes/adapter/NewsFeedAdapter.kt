@@ -101,7 +101,7 @@ class NewsFeedAdapter(private val context:
                  pos: Int) {
             val imgSrc = feed.thumbnail
             var publisherLogo = R.mipmap.ic_launcher
-            val title = Jsoup.parse(feed.title.trim { it <= ' ' }).text()
+            val title = Jsoup.parse(feed.title!!.trim { it <= ' ' }).text()
             val pubDate = feed.pubDate
             val sourceId = feed.sourceId.toDouble()
             val isRead = feed.readState == 1 && feed.detailNews != null

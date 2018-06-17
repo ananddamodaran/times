@@ -18,7 +18,10 @@ import com.google.android.gms.appinvite.AppInviteReferral
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.viginfotech.chennaitimes.*
+import com.viginfotech.chennaitimes.Config
+import com.viginfotech.chennaitimes.Constants
+import com.viginfotech.chennaitimes.LocalFeed
+import com.viginfotech.chennaitimes.R
 import com.viginfotech.chennaitimes.data.NewsContract
 import org.jsoup.Jsoup
 import java.util.*
@@ -215,7 +218,7 @@ class Detail : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         final Uri deepLink = buildDeepLink(builder.build(), 0, false);
         getShortURL(deepLink);*/
 
-        val title = Jsoup.parse(feed.title.trim { it <= ' ' }).text()
+        val title = Jsoup.parse(feed.title!!.trim { it <= ' ' }).text()
 
         share(title + "\n" + Config.DYNAMIC_LINK + "\n Install " + getString(R.string.app_name_tamil))
 

@@ -11,7 +11,7 @@ class LocalFeed : Parcelable {
     var title: String? = null
     var detailedTitle: String? = null
     var summary: String? = null
-    private var pubDate: Long = 0
+    var pubDate: Long = 0
     var guid: String? = null
     var thumbnail: String? = null
     var image: String? = null

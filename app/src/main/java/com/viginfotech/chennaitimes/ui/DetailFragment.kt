@@ -96,7 +96,7 @@ class DetailFragment : Fragment() {
                 val source = params[0].sourceId
                 val category = params[0].categoryId
                 val guid = params[0].guid
-                feed = myApiService!!.getNewsDetail(category, guid, source).execute().body()!!
+                feed = myApiService!!.getNewsDetail(category, guid!!, source).execute().body()!!
 
                 return feed
 
@@ -173,9 +173,9 @@ class DetailFragment : Fragment() {
             if (localFeed != null) {
                 var titleText: String?
                 if (localFeed!!.detailedTitle != null) {
-                    titleText = Jsoup.parse(localFeed!!.detailedTitle.trim { it <= ' ' }).text()
+                    titleText = Jsoup.parse(localFeed!!.detailedTitle!!.trim { it <= ' ' }).text()
                 } else {
-                    titleText = Jsoup.parse(localFeed!!.title.trim { it <= ' ' }).text()
+                    titleText = Jsoup.parse(localFeed!!.title!!.trim { it <= ' ' }).text()
                 }
                 publisherlogo!!.visibility = View.VISIBLE
                 publisherlogo!!.setImageDrawable(DisplayUtil.getPublisherLogo(context!!, localFeed!!.sourceId))
