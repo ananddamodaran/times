@@ -11,7 +11,7 @@ android {
         release {
             keyAlias 'keystore'
             keyPassword 'android'
-            storeFile file('/Users/anand/Documents/viginfotech/ChennaiTimes/chennaitimes.jks')
+            storeFile file('chennaitimes.jks')
             storePassword 'android'
         }
     }
