@@ -88,16 +88,10 @@ dependencies {
     implementation libraries.firebasePerf
     implementation libraries.firebaseJobDispatcher
 
-
     androidTestImplementation libraries.espresso
     testDebugImplementation libraries.junit
     androidTestDebugImplementation libraries.support_annotations
     androidTestDebugImplementation libraries.testrunner
-
-
-
-
-
 
 }
 apply plugin: 'com.google.gms.google-services'
