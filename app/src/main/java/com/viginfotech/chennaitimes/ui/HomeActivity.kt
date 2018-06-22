@@ -28,6 +28,7 @@ import com.viginfotech.chennaitimes.Constants.CATEGORY_BUSINESS
 import com.viginfotech.chennaitimes.Constants.CATEGORY_CINEMA
 import com.viginfotech.chennaitimes.Constants.CATEGORY_HEADLINES
 import com.viginfotech.chennaitimes.Constants.CATEGORY_INDIA
+import com.viginfotech.chennaitimes.Constants.CATEGORY_MEME
 import com.viginfotech.chennaitimes.Constants.CATEGORY_SPORTS
 import com.viginfotech.chennaitimes.Constants.CATEGORY_TAMILNADU
 import com.viginfotech.chennaitimes.Constants.CATEGORY_WORLD
@@ -179,6 +180,10 @@ class HomeActivity : AppCompatActivity(),
                 container!!.currentItem = CATEGORY_CINEMA
                 return true
             }
+            R.id.action_meme -> {
+                container!!.currentItem= CATEGORY_MEME
+                return true
+            }
             R.id.nav_share -> {
 
                 onInviteClicked()
@@ -221,6 +226,7 @@ class HomeActivity : AppCompatActivity(),
             CATEGORY_BUSINESS-> nav_view!!.setCheckedItem(R.id.action_business)
             CATEGORY_SPORTS -> nav_view!!.setCheckedItem(R.id.action_sports)
             CATEGORY_CINEMA-> nav_view!!.setCheckedItem(R.id.action_cinema)
+            CATEGORY_MEME-> nav_view!!.setCheckedItem(R.id.action_meme)
         }
     }
 

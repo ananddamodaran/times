@@ -87,7 +87,9 @@ dependencies {
     implementation libraries.firebaseAds
     implementation libraries.firebasePerf
     implementation libraries.firebaseJobDispatcher
+    implementation 'com.google.firebase:firebase-database:16.0.1'
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     androidTestImplementation libraries.espresso
     testDebugImplementation libraries.junit
     androidTestDebugImplementation libraries.support_annotations

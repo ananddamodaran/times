@@ -14,6 +14,7 @@ object Constants {
     val CATEGORY_BUSINESS = 4
     val CATEGORY_SPORTS = 5
     val CATEGORY_CINEMA = 6
+    val CATEGORY_MEME = 7
 
     val SOURCE_DINAKARAN = 1000
     val SOURCE_DINAMALAR = 2000

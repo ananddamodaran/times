@@ -157,6 +157,9 @@ class NewsFragment : Fragment() {
             activity!!.startService(Intent(context, TriggerRefresh::class.java).putExtra("category", page))
             return true
         }
+        if(id==R.id.action_meme_ac){
+            startActivity(Intent(context!!,MemeActivity::class.java))
+        }
 
         return super.onOptionsItemSelected(item)
 
