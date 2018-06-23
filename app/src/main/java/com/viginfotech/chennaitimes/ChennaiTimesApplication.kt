@@ -2,8 +2,9 @@ package com.viginfotech.chennaitimes
 
 import android.app.Application
 import android.content.Context
-
 import com.google.android.gms.ads.MobileAds
+
+
 
 /**
  * Created by anand on 2/5/16.

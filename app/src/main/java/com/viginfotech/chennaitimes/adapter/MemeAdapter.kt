@@ -3,9 +3,7 @@ package com.viginfotech.chennaitimes.adapter
 import android.app.Activity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.viginfotech.chennaitimes.R
 import com.viginfotech.chennaitimes.model.Meme
@@ -14,7 +12,7 @@ import com.viginfotech.chennaitimes.model.Meme
  * Created by anand on 6/22/18.
  */
 
-class MemeAdapter(var context: Activity, var data:ArrayList<Meme>) : RecyclerView.Adapter<MemeHolder>() {
+class MemeAdapter(var context: Activity, var data:MutableList<Meme>) : RecyclerView.Adapter<MemeHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemeHolder {
@@ -23,7 +21,7 @@ class MemeAdapter(var context: Activity, var data:ArrayList<Meme>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: MemeHolder, position: Int) {
-        Glide.with(context).load(data[position].url).into(holder.thumbnail)
+        Glide.with(context).load(data[position].uploadUri).into(holder.thumbnail)
 
     }
 

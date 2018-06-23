@@ -18,6 +18,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.crashlytics.android.Crashlytics
 import com.firebase.jobdispatcher.*
 import com.google.android.gms.appinvite.AppInviteInvitation
 import com.google.android.gms.common.ConnectionResult
@@ -37,6 +38,7 @@ import com.viginfotech.chennaitimes.firebase.SyncSheduleService
 import com.viginfotech.chennaitimes.util.DisplayUtil
 import com.viginfotech.chennaitimes.util.PrefUtils
 import com.viginfotech.chennaitimes.util.ZoomOutPageTransformer
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.util.*
@@ -51,6 +53,7 @@ class HomeActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        Fabric.with(this, Crashlytics())
         setContentView(R.layout.activity_home)
 
         val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)

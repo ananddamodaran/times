@@ -80,10 +80,11 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ui.MemeActivity"
+        <activity android:name=".ui.MemeActivity" />
 
-
-            ></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="5449447f40ae24c9cca5ce0b858381f50680c924" />
     </application>
 
 </manifest>

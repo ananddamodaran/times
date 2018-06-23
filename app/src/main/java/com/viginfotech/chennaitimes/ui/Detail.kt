@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.crashlytics.android.Crashlytics
 import com.google.android.gms.appinvite.AppInvite
 import com.google.android.gms.appinvite.AppInviteReferral
 import com.google.android.gms.common.ConnectionResult
@@ -23,6 +24,7 @@ import com.viginfotech.chennaitimes.Constants
 import com.viginfotech.chennaitimes.LocalFeed
 import com.viginfotech.chennaitimes.R
 import com.viginfotech.chennaitimes.data.NewsContract
+import io.fabric.sdk.android.Fabric
 import org.jsoup.Jsoup
 import java.util.*
 
@@ -39,6 +41,7 @@ class Detail : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Fabric.with(this, Crashlytics())
         setContentView(R.layout.content_detail)
         FirebaseAnalytics.getInstance(this)
         val action = intent.action
@@ -53,10 +56,7 @@ class Detail : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
             setupViewPager()
 
         }
-
-
     }
-
 
     fun setupViewPager() {
 

@@ -3,4 +3,6 @@ package com.viginfotech.chennaitimes.model
 /**
  * Created by anand on 6/22/18.
  */
-data class Meme(val url:String)
+data class Meme(val uploadUri:String=""){
+    constructor() : this( "")
+}
