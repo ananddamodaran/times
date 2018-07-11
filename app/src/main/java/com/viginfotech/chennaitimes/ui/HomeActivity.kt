@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.firebase.jobdispatcher.*
@@ -55,7 +56,8 @@ class HomeActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         Fabric.with(this, Crashlytics())
         setContentView(R.layout.activity_home)
-
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
         val dispatcher = FirebaseJobDispatcher(
                 GooglePlayDriver(this@HomeActivity)

@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.google.android.gms.appinvite.AppInvite
@@ -41,8 +42,11 @@ class Detail : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         Fabric.with(this, Crashlytics())
         setContentView(R.layout.content_detail)
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         FirebaseAnalytics.getInstance(this)
         val action = intent.action
         if (action != null) {
