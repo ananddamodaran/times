@@ -1,6 +1,7 @@
 package com.viginfotech.chennaitimes.ui
 
 
+import android.app.Fragment
 import android.content.ContentValues
 import android.os.AsyncTask
 import android.os.Bundle
