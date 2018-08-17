@@ -2,8 +2,7 @@ package com.viginfotech.chennaitimes.ui
 
 
 import android.app.Activity
-import android.app.Fragment
-import android.app.FragmentManager
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -45,7 +44,6 @@ import com.viginfotech.chennaitimes.util.ZoomOutPageTransformer
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
-import java.awt.SystemColor.window
 import java.util.*
 
 

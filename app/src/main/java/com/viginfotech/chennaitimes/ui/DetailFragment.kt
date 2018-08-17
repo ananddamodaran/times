@@ -1,7 +1,6 @@
 package com.viginfotech.chennaitimes.ui
 
 
-import android.app.Fragment
 import android.content.ContentValues
 import android.os.AsyncTask
 import android.os.Bundle
@@ -16,6 +15,7 @@ import com.google.android.gms.ads.AdView
 import com.viginfotech.chennaitimes.Constants
 import com.viginfotech.chennaitimes.LocalFeed
 import com.viginfotech.chennaitimes.R
+import com.viginfotech.chennaitimes.R.id.*
 import com.viginfotech.chennaitimes.data.NewsContract
 import com.viginfotech.chennaitimes.model.Feed
 import com.viginfotech.chennaitimes.service.ChennaiTimeAPIBuilder

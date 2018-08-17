@@ -10,6 +10,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.*
 import com.viginfotech.chennaitimes.R
+import com.viginfotech.chennaitimes.R.id.meme_recycler
 import com.viginfotech.chennaitimes.adapter.MemeHolder
 import com.viginfotech.chennaitimes.model.Meme
 import kotlinx.android.synthetic.main.activity_meme.*

@@ -14,13 +14,13 @@ android {
             storePassword 'android'
         }
     }
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.viginfotech.chennaitimes"
         minSdkVersion 18
-        targetSdkVersion 27
-        versionCode 6
-        versionName "1.0.2"
+        targetSdkVersion 28
+        versionCode 8
+        versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         testBuildType "debug"

@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.viginfotech.chennaitimes.LocalFeed
 import com.viginfotech.chennaitimes.R
+import com.viginfotech.chennaitimes.R.id.*
 import com.viginfotech.chennaitimes.adapter.NewsFeedAdapter
 import com.viginfotech.chennaitimes.adapter.NewsFeedAdapter.OnItemClickListener
 import com.viginfotech.chennaitimes.data.NewsContract
