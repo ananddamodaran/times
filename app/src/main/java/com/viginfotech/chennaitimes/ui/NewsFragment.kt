@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.viginfotech.chennaitimes.LocalFeed
 import com.viginfotech.chennaitimes.R
+import com.viginfotech.chennaitimes.R.id.*
 import com.viginfotech.chennaitimes.adapter.NewsFeedAdapter
 import com.viginfotech.chennaitimes.adapter.NewsFeedAdapter.OnItemClickListener
 import com.viginfotech.chennaitimes.data.NewsContract
@@ -156,6 +157,9 @@ class NewsFragment : Fragment() {
 
             activity!!.startService(Intent(context, TriggerRefresh::class.java).putExtra("category", page))
             return true
+        }
+        if(id==R.id.action_meme_ac){
+            startActivity(Intent(context!!,MemeActivity::class.java))
         }
 
         return super.onOptionsItemSelected(item)

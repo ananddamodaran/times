@@ -2,6 +2,7 @@ package com.viginfotech.chennaitimes.ui
 
 
 import android.app.Activity
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,7 +18,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
+import com.crashlytics.android.Crashlytics
 import com.firebase.jobdispatcher.*
 import com.google.android.gms.appinvite.AppInviteInvitation
 import com.google.android.gms.common.ConnectionResult
@@ -28,14 +31,17 @@ import com.viginfotech.chennaitimes.Constants.CATEGORY_BUSINESS
 import com.viginfotech.chennaitimes.Constants.CATEGORY_CINEMA
 import com.viginfotech.chennaitimes.Constants.CATEGORY_HEADLINES
 import com.viginfotech.chennaitimes.Constants.CATEGORY_INDIA
+import com.viginfotech.chennaitimes.Constants.CATEGORY_MEME
 import com.viginfotech.chennaitimes.Constants.CATEGORY_SPORTS
 import com.viginfotech.chennaitimes.Constants.CATEGORY_TAMILNADU
 import com.viginfotech.chennaitimes.Constants.CATEGORY_WORLD
 import com.viginfotech.chennaitimes.R
+import com.viginfotech.chennaitimes.R.id.*
 import com.viginfotech.chennaitimes.firebase.SyncSheduleService
 import com.viginfotech.chennaitimes.util.DisplayUtil
 import com.viginfotech.chennaitimes.util.PrefUtils
 import com.viginfotech.chennaitimes.util.ZoomOutPageTransformer
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.util.*
@@ -50,8 +56,10 @@ class HomeActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        Fabric.with(this, Crashlytics())
         setContentView(R.layout.activity_home)
-
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
         val dispatcher = FirebaseJobDispatcher(
                 GooglePlayDriver(this@HomeActivity)
@@ -179,6 +187,10 @@ class HomeActivity : AppCompatActivity(),
                 container!!.currentItem = CATEGORY_CINEMA
                 return true
             }
+            R.id.action_meme -> {
+                container!!.currentItem= CATEGORY_MEME
+                return true
+            }
             R.id.nav_share -> {
 
                 onInviteClicked()
@@ -221,6 +233,7 @@ class HomeActivity : AppCompatActivity(),
             CATEGORY_BUSINESS-> nav_view!!.setCheckedItem(R.id.action_business)
             CATEGORY_SPORTS -> nav_view!!.setCheckedItem(R.id.action_sports)
             CATEGORY_CINEMA-> nav_view!!.setCheckedItem(R.id.action_cinema)
+            CATEGORY_MEME-> nav_view!!.setCheckedItem(R.id.action_meme)
         }
     }
 

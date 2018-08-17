@@ -42,6 +42,11 @@
             android:title="@string/action_cinema"
             android:icon="@drawable/movie"
             />
+        <item
+            android:id="@+id/action_meme"
+            android:title="Meme"
+
+            />
         <!--<item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
