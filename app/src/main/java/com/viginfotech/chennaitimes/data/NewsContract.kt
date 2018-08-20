@@ -2,14 +2,18 @@ package com.viginfotech.chennaitimes.data
 
 import android.content.ContentUris
 import android.net.Uri
+import android.os.Build
 import android.provider.BaseColumns
+import com.viginfotech.chennaitimes.BuildConfig
 
 /**
  * Created by anand on 9/25/15.
  */
 object NewsContract {
 
-    val CONTENT_AUTHORITY = "com.viginfotech.chennaitimes.app"
+    val CONTENT_AUTHORITY = if(BuildConfig.DEBUG)
+        "com.viginfotech.chennaitimes.app.debug"
+            else "com.viginfotech.chennaitimes.app"
     val BASE_CONTENT_URI = Uri.parse("content://$CONTENT_AUTHORITY")
 
     val PATH_DB = "newsapp"

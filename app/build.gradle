@@ -19,7 +19,7 @@ android {
         applicationId "com.viginfotech.chennaitimes"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 8
+        versionCode 10
         versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -28,7 +28,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            shrinkResources true
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }

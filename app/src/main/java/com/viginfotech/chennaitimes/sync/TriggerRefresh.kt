@@ -28,12 +28,7 @@ import java.util.*
  */
 class TriggerRefresh : IntentService("CTAppTriggerRefresh") {
     private var data: ArrayList<LocalFeed>? = null
-    val myApiService = ChennaiTimeAPIBuilder.buildChennaiTimesService();
-
-    override fun onCreate() {
-        super.onCreate()
-
-    }
+    private val myApiService = ChennaiTimeAPIBuilder.buildChennaiTimesService()
 
     override fun onHandleIntent(intent: Intent?) {
         if (!NetworkUtil.isOnline(this)) return
