@@ -28,9 +28,10 @@ import java.util.*
  */
 class TriggerRefresh : IntentService("CTAppTriggerRefresh") {
     private var data: ArrayList<LocalFeed>? = null
-    private val myApiService = ChennaiTimeAPIBuilder.buildChennaiTimesService()
+
 
     override fun onHandleIntent(intent: Intent?) {
+
         if (!NetworkUtil.isOnline(this)) return
         val bundle = intent!!.extras
         var category = -1
@@ -151,6 +152,8 @@ class TriggerRefresh : IntentService("CTAppTriggerRefresh") {
 
     companion object {
         private val TAG = TriggerRefresh::class.java.simpleName
+        var myApiService = ChennaiTimeAPIBuilder.buildChennaiTimesService()
+
     }
 
 }// private ChennaiTimesApi myApiService;

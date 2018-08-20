@@ -2,7 +2,6 @@ package com.viginfotech.chennaitimes.data
 
 import android.content.ContentUris
 import android.net.Uri
-import android.os.Build
 import android.provider.BaseColumns
 import com.viginfotech.chennaitimes.BuildConfig
 
