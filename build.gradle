@@ -3,8 +3,9 @@
 buildscript {
     ext.versions = [
             retrofit: '2.4.0',
-            kotlin: '1.2.51',
+            kotlin: '1.2.60',
             supportlib : '27.1.1',
+
             firebaseCore: '16.0.0',
             firebaseCrash: '16.0.0',
             firebaseMessaging: '17.0.0',
@@ -12,11 +13,14 @@ buildscript {
             firebaseAds: '15.0.1',
             firebasePerf: '16.0.0',
             firebaseJobDispatcher: '0.8.5',
+
             glideVersion: '4.7.1',
+
             findBugsVersion: '3.0.2',
             junit: '4.12',
             espresso: '3.0.2',
             testrunner: '1.0.2',
+
             fabric: '1.25.4'
 
 
