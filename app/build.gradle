@@ -19,7 +19,7 @@ android {
         applicationId "com.viginfotech.chennaitimes"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 10
+        versionCode 11
         versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
