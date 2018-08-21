@@ -21,14 +21,6 @@ android {
     defaultConfig {
         // The following values should be changed by the user
 
-        /**
-         * The URL to the API. Default when running locally on your computer:
-         * "http://10.0.2.2:8080/_ah/api/"
-         */
-        buildConfigField "String", "LOCAL_ROOT_URL",
-                "\"http://10.0.2.2:8080/_ah/api/\""
-
-
         buildConfigField "String", "BACKEND_STAGING",
                 "\"https://chennaitimes-staging.appspot.com/_ah/api/\""
 
