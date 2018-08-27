@@ -21,13 +21,19 @@ android {
     defaultConfig {
         // The following values should be changed by the user
 
-        buildConfigField "String", "BACKEND_STAGING",
-                "\"https://chennaitimes-staging.appspot.com/_ah/api/\""
+        /* buildConfigField "String", "BACKEND_PROD_A",
+                 "\"https://chennaitimes-prealpha.appspot.com/_ah/api/\""
+ */
+
+        /*   buildConfigField "String", "BACKEND_STAGING",
+                   "\"https://chennaitimes-staging.appspot.com/_ah/api/\""
+   */
 
         buildConfigField "String", "BACKEND_PROD",
-                "\"https://chennaitimes-prod.appspot.com/_ah/api/\""
-        buildConfigField "String", "BACKEND_PROD_A",
-                "\"https://chennaitimes-prealpha.appspot.com/_ah/api/\""
+                "\"https://chennai-times.appspot.com/_ah/api/\""
+
+        buildConfigField "String", "BACKEND_STAGING",
+                "\"https://chennai-times-staging.appspot.com/_ah/api/\""
 
         buildConfigField "String", "DYNAMIC_LINK",
                 "\"https://eyfd6.app.goo.gl/lXaW\""
