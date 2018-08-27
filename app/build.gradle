@@ -19,7 +19,7 @@ android {
         applicationId "com.viginfotech.chennaitimes"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 13
+        versionCode 14
 
         versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
